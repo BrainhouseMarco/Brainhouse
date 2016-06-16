@@ -1,0 +1,211 @@
+*{
+    font-family: Arial,sans-serif;
+    font-size: 18px;
+}
+
+body{
+    background-color: #000d1e; /*000d1e*/
+}
+
+
+a.menue:link    {
+    color:white; 
+    background-color:transparent; 
+    text-decoration:none
+}
+a.menue:visited {
+    color:white; 
+    background-color:transparent; 
+    text-decoration:none
+}
+a.menue:hover   {
+    color:e27d2f; 
+    background-color:transparent; 
+    text-decoration:underline
+}
+a.menue:active  {
+    color:white; 
+    background-color:transparent; 
+    text-decoration:underline
+}
+
+a.normal:link    {
+    color:black; 
+    background-color:transparent; 
+    text-decoration:none
+}
+a.normal:visited {
+    color:#000d1e; 
+    background-color:transparent; 
+    text-decoration:none
+}
+a.normal:hover   {
+    color:#013d79; 
+    background-color:transparent; 
+    text-decoration:underline
+}
+a.normal:active  {
+    color:#013d79; 
+    background-color:transparent; 
+    text-decoration:underline}
+
+.top {
+    background-color: white;
+    width: 70%;    
+    height: 200px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;  
+}
+
+.middle{
+    background-color: white;
+    width: 90%;    
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px; 
+}
+
+.bottom {
+    background-color: white;
+    width: 70%;    
+    height: 30px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px; 
+}
+
+.impressum {
+    position: relative;
+    width: 50%;    
+    height: 100px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;  
+}
+
+#logo {
+    width: 50%;    
+    height: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding:  0px; */ 
+    float: left;
+}
+
+#menue { 
+    float: right;
+}
+
+#rightDiv {
+    float:right;
+    width:250px;
+    height:auto;
+    min-height: 360px;
+    background-color: #e27d2f;
+    margin-right: 20%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+#middleDiv {
+    background-color: #e27d2f;
+    width: auto;
+    height:auto;
+    min-height: 360px;
+    margin-left: 41%;
+    margin-right: 41%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+#leftDiv {
+    float:left;
+    width:250px;
+    height:auto;
+    min-height: 360px;
+    background-color: #e27d2f;
+    margin-left: 20%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+
+}
+
+.linkButton {
+    background-color: white;
+    color: #e27d2f;
+    padding: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;   
+    margin-left: 17%;
+    margin-right: 17%;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+.dropbtn {
+    background-color: #000d1e;
+    color: white;
+    padding: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: white}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #e27d2f;
+}
+
+.centerOrange{
+    text-align: center;
+    color: #e27d2f;
+}
+
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
