@@ -41,7 +41,7 @@ $_SESSION['lastvisit'] = time();
                 <div class="dropdown">
                     <button class="dropbtn">Home</button>
                     <div class="dropdown-content">
-                        <a class="normal" href="BHwebHome.html" hidden="">abmelden</a>
+                        <a class="normal" href="BHwebShopAbmelden.php" hidden="">abmelden</a>
                     </div>
                 </div>
                  <div class="dropdown">

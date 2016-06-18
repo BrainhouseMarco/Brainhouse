@@ -1,19 +1,14 @@
 <?php
 session_start();
+$_SESSION = array();
 
-if (isset($_SESSION['lastvisit'])) {
-   $diff = time() - $_SESSION['lastvisit'];
-   if ($diff > 300 ) {
-                   $_SESSION['loggedin'] = 0;
-        }
-} else {
-        $_SESSION['loggedin'] = 0;
+
+if(isset($_COOKIE[session_name()]))
+{
+         setcookie( session_name(),"",time()-42000,'/');
 }
+session_destroy();
 
- #$_SESSION['Warenkorb'][]= 1337;
-# $_SESSION['Warenkorb'][] = 2525;
-   #unset($_SESSION['Warenkorb'][0]);
-$_SESSION['lastvisit'] = time();
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +18,7 @@ $_SESSION['lastvisit'] = time();
         <meta name="description" content="smarthome Technologie">
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="5; URL=BHwebHome.html">
         <link rel="stylesheet" type="text/css" href="BHweb.css">
         <title>brainhouse - SHOP</title>
     </head>
@@ -55,50 +51,19 @@ $_SESSION['lastvisit'] = time();
                 </div>
                 <div class="dropdown">
                 <?php
-                if($_SESSION['loggedin']==1)
-                {   echo '<button class="dropbtn">Mein Profil</button><div class="dropdown-content" ><a class="normal"href="">Daten</a><a class="normal"href="">Bestellungen</a><a class="normal"href="">weiteres</a></div>';
-                }else{
+                #if($_SESSION['loggedin']==1)
+                #{   echo '<button class="dropbtn">Mein Profil</button><div class="dropdown-content" ><a class="normal"href="">Daten</a><a class="normal"href="">Bestellungen</a><a class="normal"href="">weiteres</a></div>';
+                #}else{
                    echo '<button class="dropbtn">Anmelden</button><div class="dropdown-content" ><a class="normal"href="">Anmelden</a><a class="normal"href="">Registrieren</a>';
-                }
+                #}
                 ?>
                 </div>
             </div>
         </div>
 
         <div class="middle">
-           <?php
-
-             if(isset($_SESSION['Warenkorb']))     # count($_SESSION['Warenkorb[0]'])==0, isset($_SESSION['Warenkorb[0]']
-             {
-             $anzahl = count ($_SESSION['Warenkorb']);
-             #echo var_dump($anzahl);
-                  if($anzahl>0)
-                  {
-                         echo'<h1>Ihr Warenkorb:  </h1>';
-                         echo '<ol>';
-
-                         for ($x = 0; $x < $anzahl; $x++)
-                         {
-                           echo "<li>Produkt Nummer: {$_SESSION['Warenkorb'][$x]}</li>";
-                         }
-
-                         echo '</ol>';
-
-                         #echo var_dump($_SESSION['Warenkorb']);
-                  }else{
-                         echo'<h1>Ihr Warenkorb ist leer!</h1>';
-                  }
-             }else
-             {
-
-                 echo'<h1>Ihr Warenkorb ist leer!</h1>';
-             }
-
-
-
-
-
-           ?>
+            <h1>Sie wurden abgemeldet!</h1>
+            In 5 Sekunden werden Sie automatisch zur&uuml;ck auf unsere Startseite geleitet!
         </div>
 
         <div class="bottom">
