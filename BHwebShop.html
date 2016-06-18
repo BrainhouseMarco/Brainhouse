@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="keywords" content="brainhouse, smarthome, modern, technologisch, shop">
-        <meta name="description" content="smarthome Shop">
+        <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
+        <meta name="description" content="smarthome Technologie">
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <meta charset="UTF-8"> 
         <link rel="stylesheet" type="text/css" href="BHweb.css">
         <title>brainhouse - SHOP</title>
     </head>
-    <body style=" background-color: white">
-        <div style="background-color: #e27d2f; width: 100%; height: 100px; margin: 0%; padding: 0%;">
-            <br>
-            <a  href="BHwebHome.html"><img src="" alt="brainhouse Logo" style="width:auto; height:150px;"></a>
-            <div style="float: right; margin-right: 5%;">
-                <a href="">LogIn</a>
-                <a href=""><img src="data/images/icons/warenkorb.png" alt="warenkorb" style="width:auto; height:40px;">()</a>
-            </div>
-        </div>
-        <div>
-            <div style="float: left;">
-                <div class="dropdown">
-                    <button class="dropbtn">Effizienzprodukte</button>
+    
+    <body>
+        <div class="top">
+            <div id="logo">
+                <a class="normal" href="BHwebHome.html"><img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
+            </div>            
+            <div id="menue">
+                <div class="dropdown">  
+                    <button class="dropbtn">Produkte</button>
+                    <div class="dropdown-content"> 
+                        <a class="normal" href="" hidden="">alle Produkte</a>
+                        <hr>
+                        <a class="normal" href="" hidden="">Dienstleistungen</a>
+                    </div>           
+                </div> 
+                <div class="dropdown">  
+                    <button class="dropbtn">Home</button>
+                    <div class="dropdown-content">                         
+                        <a class="normal" href="BHwebHome.html" hidden="">abmelden</a>
+                    </div>
+                </div> 
+                 <div class="dropdown">  
+                    <button class="dropbtn">Warenkorp</button>
+                    <div class="dropdown-content">                         
+                        <a class="normal" href="" hidden=""><img src="data/images/icons/warenkorb.png" alt="warenkorb" style="width:auto; height:40px;"></a> 
+                    </div>           
                 </div> 
                 <div class="dropdown">
-                    <button class="dropbtn">eMobility</button>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn">SmartHome</button>
-                    <div class="dropdown-content">                        
-                        <a class="normal"href="">Alle Produkte</a>
-                        <hr>
-                        <a class="normal"href="">Sicherheit</a>
-                        <a class="normal"href="">Energie</a>
-                        <a class="normal"href="">Komfort</a>
-                        <hr>
-                        <a class="normal"href="">AllInOne Angebote</a>
-                        <hr>
-                        <a class="normal"href="">Zubehör</a>
-                        <a class="normal"href="">Apps</a>
+                    <button class="dropbtn">Mein Profil</button>
+                    <div class="dropdown-content" >                        
+                        <a class="normal"href="">Daten</a>
+                        <a class="normal"href="">Bestellungen</a>
+                        <a class="normal"href="">weiteres</a>
                     </div>
-                </div>
+                </div>            
             </div>
         </div>
+        
+        <div class="middle">
+            // hier können die Produkte stehen
+        </div>
+                
+        <div class="bottom">
+            <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="data/images/icons/fuofacebook.png" alt="find us on facebook" style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
+            <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="data/images/icons/fuotwitter.png" alt="follow us on twitter" style="width:auto; height:50px; margin-right: 20%; margin-bottom: 10px"></a>
+            <p style="float: left">Copyright © 2016 <a class="normal" href="BMNwebHome.html" style="">BMN</a></p>
+            <p style="float: right"><a class="normal" href="BHwebImpressum.html" style="">Impressum</a></p>   
+        </div>
     </body>
+    
 </html>
