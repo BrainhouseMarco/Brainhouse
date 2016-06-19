@@ -11,12 +11,13 @@
         <script>
             $(document).ready(function(){
                 $("#anmeldung").click(function(){
-                    if ($('#regist').css('display') !== 'none' ) {
+                    $("#logindiv").toggle();
+                    if ($("#regist").css('display') !== "none") {
                         $("#regist").toggle();
-                        $("#logindiv").toggle();
-                    } else if ($('#logindiv').css('display') == 'none' ){
-                        $("#logindiv").toggle();
+                    } else {
+                        $("#login").toggle();
                     }
+                        
                 });
                 $("#registbtn").click(function(){
                     $("#login").toggle();
@@ -69,11 +70,11 @@
         </div>
         
         <div id="logindiv" class="anmeldung" style="display: none;">
-            <div id="login" style="margin-left: 20%; margin-right: 20%;">
+            <div id="login" style=" display: none; margin-left: 20%; margin-right: 20%;">
                 <form action="" id="login">
-                    <input type="text" id="emailInput" maxlength="30" value="E-amil" class="inPut">
+                    <input type="text" id="emailInput" maxlength="30" placeholder="E-mail" class="inPut">
                     <br>
-                    <input type="password" id="passInput" maxlength="30" value="Passwort" class="inPut">
+                    <input type="password" id="passInput" maxlength="30" placeholder="Passwort" class="inPut">
                     <br>
                     <button type="submit" class="subbtn">login</button>
                 </form>
@@ -93,20 +94,22 @@
                         <option>Frau</option>
                         <option>Herr</option>
                     </select>
-                    <input type="text" id="vornameInput" value="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;"> 
-                    <input type="text" id="nachnameInput" value="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
+                    <input type="text" id="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;"> 
+                    <input type="text" id="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
                     <br>
-                    <input type="text" id="unternehmensnameInput" value="Unternehmensname" maxlength="60" class="inPut" style="width: 500px;">
+                    <input type="text" id="unternehmensnameInput" placeholder="Unternehmensname" maxlength="60" class="inPut" style="width: 490px;">
                     <br>
-                    <input type="text" id="strasseInput" value="Adresse" maxlength="60" class="inPut" style="width: 500px;">
+                    <input type="date" id="gebTagInput" placeholder="Geburtsdatum, z.Bsp. 01.01.2016" maxlength="10" class="inPut" style="width: 490px;">
                     <br>
-                    <input type="text" id="plzInput" value="PLZ" maxlength="5" class="inPut">
-                    <input type="text" id="stadtInput" value="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 280px;" >
+                    <input type="text" id="strasseInput" placeholder="Adresse" maxlength="60" class="inPut" style="width: 490px;">
                     <br>
-                    <input type="text" id="bundeslandInput" value="Bundesland" maxlength="30" class="inPut" style="width: 500px;">
+                    <input type="text" id="plzInput" placeholder="PLZ" maxlength="5" class="inPut">
+                    <input type="text" id="stadtInput" placeholder="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >
                     <br>
-                    <input type="tel" id="telNrInput" value="Telefon" maxlength="30" class="inPut">
-                    <input type="email" id="emailInput" value="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 280px;"> 
+                    <input type="text" id="bundeslandInput" placeholder="Bundesland" maxlength="30" class="inPut" style="width: 490px;">
+                    <br>
+                    <input type="tel" id="telNrInput" placeholder="Telefon" maxlength="30" class="inPut">
+                    <input type="email" id="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;"> 
                     <br>
                     <br>
                     <input type="checkbox" id="agb" value="AGB zustimmen">
