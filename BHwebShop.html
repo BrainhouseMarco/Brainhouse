@@ -1,18 +1,39 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
         <meta name="description" content="smarthome Technologie">
-        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8"> 
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <link rel="stylesheet" type="text/css" href="BHweb.css">
+        <script src="JS/jquery-3.0.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#anmeldung").click(function(){
+                    $("#logindiv").toggle();
+                    if ($("#regist").css('display') !== "none") {
+                        $("#regist").toggle();
+                    } else {
+                        $("#login").toggle();
+                    }
+                        
+                });
+                $("#registbtn").click(function(){
+                    $("#login").toggle();
+                    $("#regist").toggle();
+                });
+            });
+        </script>
         <title>brainhouse - SHOP</title>
     </head>
     
-    <body>
+
+    <body >
         <div class="top">
             <div id="logo">
-                <a class="normal" href="BHwebHome.html"><img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
+                 <img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;">	
+			<a class="normal" href="BHwebHome.html"><img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
             </div>            
             <div id="menue">
                 <div class="dropdown">  
@@ -23,12 +44,14 @@
                         <a class="normal" href="" hidden="">Dienstleistungen</a>
                     </div>           
                 </div> 
+
                 <div class="dropdown">  
                     <button class="dropbtn">Home</button>
                     <div class="dropdown-content">                         
                         <a class="normal" href="BHwebHome.html" hidden="">abmelden</a>
                     </div>
                 </div> 
+
                  <div class="dropdown">  
                     <button class="dropbtn">Warenkorp</button>
                     <div class="dropdown-content">                         
@@ -36,16 +59,82 @@
                     </div>           
                 </div> 
                 <div class="dropdown">
+
                     <button class="dropbtn">Mein Profil</button>
                     <div class="dropdown-content" >                        
                         <a class="normal"href="">Daten</a>
                         <a class="normal"href="">Bestellungen</a>
                         <a class="normal"href="">weiteres</a>
                     </div>
+
+                </div>
+                <div class="dropdown">  
+                    <button id="anmeldung" class="dropbtn" >Anmeldung</button>
+                </div>
+                <div class="dropdown">  
+                    <button class="dropbtn" >Home</button>
+                    <div class="dropdown-content">
+                        <a class="normal"href="">zurück zur Website</a>
+                    </div>
                 </div>            
             </div>
         </div>
         
+        <div id="logindiv" class="anmeldung" style="display: none;">
+            <div id="login" style=" display: none; margin-left: 20%; margin-right: 20%;">
+                <form action="" id="login">
+                    <input type="text" id="emailInput" maxlength="30" placeholder="E-mail" class="inPut">
+                    <br>
+                    <input type="password" id="passInput" maxlength="30" placeholder="Passwort" class="inPut">
+                    <br>
+                    <button type="submit" class="subbtn">login</button>
+                </form>
+                <p style="font-size: 12px;">Noch nicht als Kunde registriert? <button id="registbtn" class="dropbtn" style="background-color: #e27d2f">hier registrieren</button></p>
+            </div>
+            
+            <div id="regist" style="display: none; margin-left: 20%; margin-right: 20%;">
+                <h1>Registrierung</h1>
+                <form>
+                    <fieldset>
+                        <input type="radio" id="privat" value="Privatperson" name="kunde">
+                        <label for="privat">Privatperson</label>
+                        <input type="radio" id="unternehmen" value="Unternehmen" name="kunde">
+                        <label for="unternehmen">Unternehmen</label>
+                    </fieldset>
+                    <select name="geschlecht">
+                        <option>Frau</option>
+                        <option>Herr</option>
+                    </select>
+                    <input type="text" id="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;"> 
+                    <input type="text" id="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
+                    <br>
+                    <input type="text" id="unternehmensnameInput" placeholder="Unternehmensname" maxlength="60" class="inPut" style="width: 490px;">
+                    <br>
+                    <input type="date" id="gebTagInput" placeholder="Geburtsdatum, z.Bsp. 01.01.2016" maxlength="10" class="inPut" style="width: 490px;">
+                    <br>
+                    <input type="text" id="strasseInput" placeholder="Adresse" maxlength="60" class="inPut" style="width: 490px;">
+                    <br>
+                    <input type="text" id="plzInput" placeholder="PLZ" maxlength="5" class="inPut">
+                    <input type="text" id="stadtInput" placeholder="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >
+                    <br>
+                    <input type="text" id="bundeslandInput" placeholder="Bundesland" maxlength="30" class="inPut" style="width: 490px;">
+                    <br>
+                    <input type="tel" id="telNrInput" placeholder="Telefon" maxlength="30" class="inPut">
+                    <input type="email" id="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;"> 
+                    <br>
+                    <br>
+                    <input type="checkbox" id="agb" value="AGB zustimmen">
+                    <label for="agb">Ich bestätige hier mit die brainhouse <a class="normal" href="">AGB</a></label>
+                    <br>
+                    <input type="checkbox" id="newsletter" value="Newsletter bestellen">
+                    <label for="newsletter">Ich möchte den brainhouse E-mail Newsletter erhalten</label>
+                    <br>
+                    <br>
+                    <button type="submit" class="subbtn">registrieren</button>
+                </form>
+            </div>
+        </div>
+
         <div class="middle">
             // hier können die Produkte stehen
         </div>
