@@ -1,46 +1,136 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="keywords" content="brainhouse, smarthome, modern, technologisch, shop">
-        <meta name="description" content="smarthome Shop">
-        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
+        <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
+        <meta name="description" content="smarthome Technologie">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8"> 
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <link rel="stylesheet" type="text/css" href="BHweb.css">
+        <script src="JS/jquery-3.0.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#anmeldung").click(function(){
+                    if ($('#regist').css('display') !== 'none' ) {
+                        $("#regist").toggle();
+                        $("#logindiv").toggle();
+                    } else if ($('#logindiv').css('display') == 'none' ){
+                        $("#logindiv").toggle();
+                    }
+                });
+                $("#registbtn").click(function(){
+                    $("#login").toggle();
+                    $("#regist").toggle();
+                });
+            });
+        </script>
         <title>brainhouse - SHOP</title>
     </head>
-    <body style=" background-color: white">
-        <div style="background-color: #e27d2f; width: 100%; height: 100px; margin: 0%; padding: 0%;">
-            <br>
-            <a  href="BHwebHome.html"><img src="" alt="brainhouse Logo" style="width:auto; height:150px;"></a>
-            <div style="float: right; margin-right: 5%;">
-                <a href="">LogIn</a>
-                <a href=""><img src="data/images/icons/warenkorb.png" alt="warenkorb" style="width:auto; height:40px;">()</a>
-            </div>
-        </div>
-        <div>
-            <div style="float: left;">
-                <div class="dropdown">
-                    <button class="dropbtn">Effizienzprodukte</button>
+    
+    <body >
+        <div class="top">
+            <div id="logo">
+                 <img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;">
+            </div>            
+            <div id="menue">
+                <div class="dropdown">  
+                    <button class="dropbtn">Produkte</button>
+                    <div class="dropdown-content"> 
+                        <a class="normal" href="" hidden="">alle Produkte</a>
+                        <hr>
+                        <a class="normal" href="" hidden="">Dienstleistungen</a>
+                    </div>           
+                </div> 
+
+                 <div class="dropdown">  
+                    <button class="dropbtn">Warenkorp</button>
+                    <div class="dropdown-content">                         
+                        <a class="normal" href="" hidden=""><img src="data/images/icons/warenkorb.png" alt="warenkorb" style="width:auto; height:40px;"></a> 
+                    </div>           
                 </div> 
                 <div class="dropdown">
-                    <button class="dropbtn">eMobility</button>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn">SmartHome</button>
-                    <div class="dropdown-content">                        
-                        <a class="normal"href="">Alle Produkte</a>
-                        <hr>
-                        <a class="normal"href="">Sicherheit</a>
-                        <a class="normal"href="">Energie</a>
-                        <a class="normal"href="">Komfort</a>
-                        <hr>
-                        <a class="normal"href="">AllInOne Angebote</a>
-                        <hr>
-                        <a class="normal"href="">Zubehör</a>
-                        <a class="normal"href="">Apps</a>
+                    <button class="dropbtn">Mein Konto</button>
+                    <div class="dropdown-content">
+                        <a class="normal"href="">Daten</a>
+                        <a class="normal"href="">Bestellungen</a>
+                        <a class="normal"href="">weiteres</a>
                     </div>
                 </div>
+                <div class="dropdown">  
+                    <button id="anmeldung" class="dropbtn" >Anmeldung</button>
+                </div>
+                <div class="dropdown">  
+                    <button class="dropbtn" >Home</button>
+                    <div class="dropdown-content">
+                        <a class="normal"href="">zurück zur Website</a>
+                    </div>
+                </div>            
             </div>
         </div>
+        
+        <div id="logindiv" class="anmeldung" style="display: none;">
+            <div id="login" style="margin-left: 20%; margin-right: 20%;">
+                <form action="" id="login">
+                    <input type="text" id="emailInput" maxlength="30" value="E-amil" class="inPut">
+                    <br>
+                    <input type="password" id="passInput" maxlength="30" value="Passwort" class="inPut">
+                    <br>
+                    <button type="submit" class="subbtn">login</button>
+                </form>
+                <p style="font-size: 12px;">Noch nicht als Kunde registriert? <button id="registbtn" class="dropbtn" style="background-color: #e27d2f">hier registrieren</button></p>
+            </div>
+            
+            <div id="regist" style="display: none; margin-left: 20%; margin-right: 20%;">
+                <h1>Registrierung</h1>
+                <form>
+                    <fieldset>
+                        <input type="radio" id="privat" value="Privatperson">
+                        <label for="privat">Privatperson</label>
+                        <input type="radio" id="unternehmen" value="Unternehmen">
+                        <label for="unternehmen">Unternehmen</label>
+                    </fieldset>
+                    <select name="geschlecht">
+                        <option>Frau</option>
+                        <option>Herr</option>
+                    </select>
+                    <input type="text" id="vornameInput" value="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;"> 
+                    <input type="text" id="nachnameInput" value="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
+                    <br>
+                    <input type="text" id="unternehmensnameInput" value="Unternehmensname" maxlength="60" class="inPut" style="width: 500px;">
+                    <br>
+                    <input type="text" id="strasseInput" value="Adresse" maxlength="60" class="inPut" style="width: 500px;">
+                    <br>
+                    <input type="text" id="plzInput" value="PLZ" maxlength="5" class="inPut">
+                    <input type="text" id="stadtInput" value="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 280px;" >
+                    <br>
+                    <input type="text" id="bundeslandInput" value="Bundesland" maxlength="30" class="inPut" style="width: 500px;">
+                    <br>
+                    <input type="tel" id="telNrInput" value="Telefon" maxlength="30" class="inPut">
+                    <input type="email" id="emailInput" value="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 280px;"> 
+                    <br>
+                    <br>
+                    <input type="checkbox" id="agb" value="AGB zustimmen">
+                    <label for="agb">Ich bestätige hier mit die brainhouse <a class="normal" href="">AGB</a></label>
+                    <br>
+                    <input type="checkbox" id="newsletter" value="Newsletter bestellen">
+                    <label for="newsletter">Ich möchte den brainhouse E-mail Newsletter erhalten</label>
+                    <br>
+                    <br>
+                    <button type="submit" class="subbtn">registrieren</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="middle">
+            // hier können die Produkte stehen
+        </div>
+                
+        <div class="bottom">
+            <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="data/images/icons/fuofacebook.png" alt="find us on facebook" style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
+            <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="data/images/icons/fuotwitter.png" alt="follow us on twitter" style="width:auto; height:50px; margin-right: 20%; margin-bottom: 10px"></a>
+            <p style="float: left">Copyright © 2016 <a class="normal" href="BMNwebHome.html" style="">BMN</a></p>
+            <p style="float: right"><a class="normal" href="BHwebImpressum.html" style="">Impressum</a></p>   
+        </div>
     </body>
+    
 </html>
