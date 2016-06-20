@@ -7,104 +7,105 @@ body{
     background-color: #000d1e; /*000d1e*/
 }
 
-
-a.menue:link    {
-    color:white;
-    background-color:transparent;
-    text-decoration:none
+fieldset {
+	border: none;
 }
-a.menue:visited {
-    color:white;
-    background-color:transparent;
+
+.inPut {
+    height: 18px;
+    width: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+a.menue:link,a.menue:visited,a.menue:active, a.menue:hover {
+    color:white; 
+    background-color:transparent; 
     text-decoration:none
 }
 a.menue:hover   {
-    color:e27d2f;
-    background-color:transparent;
-    text-decoration:underline
-}
-a.menue:active  {
-    color:white;
-    background-color:transparent;
-    text-decoration:underline
+    color:#e27d2f;
 }
 
-a.normal:link    {
-    color:black;
-    background-color:transparent;
-    text-decoration:none
+a.normal:link, a.normal:visited, a.normal:hover, a.normal:active {
+    color:black; 
+    background-color:transparent; 
+    text-decoration:none;
 }
 a.normal:visited {
     color:#000d1e;
-    background-color:transparent;
-    text-decoration:none
 }
-a.normal:hover   {
+a.normal:hover, a.normal:active {
     color:#013d79;
-    background-color:transparent;
-    text-decoration:underline
 }
-a.normal:active  {
-    color:#013d79;
-    background-color:transparent;
-    text-decoration:underline}
 
 .top {
     background-color: white;
-    width: 70%;
+    width: 70%;    
     height: 200px;
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom: 10px;
     margin-top: 10px;
-    padding: 20px;
+    padding: 20px;  
+}
+
+.anmeldung {
+    background-color: #e27d2f;
+    width: 50%;    
+    height: auto;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px; 
 }
 
 .middle{
     background-color: white;
-    width: 90%;
+    width: 90%;    
     height: auto;
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 10px;
     margin-top: 10px;
-    padding: 20px;
+    padding: 20px;  
 }
 
 .bottom {
     background-color: white;
-    width: 70%;
+    width: 70%;    
     height: 30px;
     margin-left: 15%;
     margin-right: 15%;
     margin-bottom: 10px;
     margin-top: 10px;
-    padding: 20px;
+    padding: 20px; 
 }
 
 .impressum {
     position: relative;
-    width: 50%;
+    width: 50%;    
     height: 100px;
     margin-left: 25%;
     margin-right: 25%;
     margin-bottom: 10px;
     margin-top: 10px;
-    padding: 20px;
+    padding: 20px;  
 }
 
 #logo {
-    width: 50%;
+    width: 50%;    
     height: 100%;
     margin-left: 0%;
     margin-right: 0%;
     margin-bottom: 2px;
     margin-top: 2px;
-    padding:  0px; */
+    padding:  0px; */ 
     float: left;
 }
 
-#menue {
+#menue { 
     float: right;
 }
 
@@ -143,19 +144,7 @@ a.normal:active  {
 
 }
 
-.linkButton {
-    background-color: white;
-    color: #e27d2f;
-    padding: auto;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin-left: 17%;
-    margin-right: 17%;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-}
-.dropbtn {
+.dropbtn, .subbtn {
     background-color: #000d1e;
     color: white;
     padding: 15px;
@@ -164,6 +153,11 @@ a.normal:active  {
     font-size: 16px;
     border: none;
     cursor: pointer;
+}
+
+.subbtn {
+    background-color: #013d79;
+    margin-left: 20%;
 }
 
 .dropdown {
@@ -203,12 +197,8 @@ a.normal:active  {
     color: #e27d2f;
 }
 
-h1 {color:#e27d2f;
-    text align:left;
-    font-size: 25pt;}
-h2 {color:#013d79;
-    text align:left;
-    font-size: 15pt;}
+h1 {}
+h2 {}
 h3 {}
 h4 {}
 h5 {}
