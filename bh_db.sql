@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2016 at 10:23 PM
+-- Generation Time: Jun 21, 2016 at 05:17 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `brainhouse`
+-- Database: `bh_db`
 --
 
 -- --------------------------------------------------------
@@ -32,6 +32,14 @@ CREATE TABLE `anmeldedaten` (
   `Nutzername` text NOT NULL,
   `Passwort` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONS FOR TABLE `anmeldedaten`:
+--   `K_ID`
+--       `kunden` -> `K_ID`
+--   `K_ID`
+--       `kunden` -> `K_ID`
+--
 
 --
 -- Dumping data for table `anmeldedaten`
@@ -50,6 +58,14 @@ CREATE TABLE `bestellungen` (
   `B_ID` int(11) NOT NULL,
   `PPOS_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONS FOR TABLE `bestellungen`:
+--   `PPOS_ID`
+--       `produktpos` -> `PPOS_ID`
+--   `PPOS_ID`
+--       `produktpos` -> `PPOS_ID`
+--
 
 --
 -- Dumping data for table `bestellungen`
@@ -82,6 +98,22 @@ CREATE TABLE `kunden` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- RELATIONS FOR TABLE `kunden`:
+--   `B_ID`
+--       `bestellungen` -> `B_ID`
+--   `L_ID`
+--       `land` -> `L_ID`
+--   `O_ID`
+--       `ort` -> `O_ID`
+--   `O_ID`
+--       `ort` -> `O_ID`
+--   `B_ID`
+--       `bestellungen` -> `B_ID`
+--   `L_ID`
+--       `land` -> `L_ID`
+--
+
+--
 -- Dumping data for table `kunden`
 --
 
@@ -98,6 +130,10 @@ CREATE TABLE `land` (
   `L_ID` int(11) NOT NULL,
   `Name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONS FOR TABLE `land`:
+--
 
 --
 -- Dumping data for table `land`
@@ -126,6 +162,14 @@ CREATE TABLE `mitarbeiter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- RELATIONS FOR TABLE `mitarbeiter`:
+--   `B_ID`
+--       `bestellungen` -> `B_ID`
+--   `B_ID`
+--       `bestellungen` -> `B_ID`
+--
+
+--
 -- Dumping data for table `mitarbeiter`
 --
 
@@ -144,6 +188,14 @@ CREATE TABLE `ort` (
   `PLZ` int(255) NOT NULL,
   `L_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONS FOR TABLE `ort`:
+--   `L_ID`
+--       `land` -> `L_ID`
+--   `L_ID`
+--       `land` -> `L_ID`
+--
 
 --
 -- Dumping data for table `ort`
@@ -168,6 +220,10 @@ CREATE TABLE `produkte` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- RELATIONS FOR TABLE `produkte`:
+--
+
+--
 -- Dumping data for table `produkte`
 --
 
@@ -187,6 +243,14 @@ CREATE TABLE `produktpos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- RELATIONS FOR TABLE `produktpos`:
+--   `P_ID`
+--       `produkte` -> `P_ID`
+--   `P_ID`
+--       `produkte` -> `P_ID`
+--
+
+--
 -- Dumping data for table `produktpos`
 --
 
@@ -201,19 +265,24 @@ INSERT INTO `produktpos` (`PPOS_ID`, `P_ID`) VALUES
 -- Indexes for table `anmeldedaten`
 --
 ALTER TABLE `anmeldedaten`
-  ADD PRIMARY KEY (`A_ID`);
+  ADD PRIMARY KEY (`A_ID`),
+  ADD KEY `K_ID` (`K_ID`);
 
 --
 -- Indexes for table `bestellungen`
 --
 ALTER TABLE `bestellungen`
-  ADD PRIMARY KEY (`B_ID`);
+  ADD PRIMARY KEY (`B_ID`),
+  ADD KEY `PPOS_ID` (`PPOS_ID`);
 
 --
 -- Indexes for table `kunden`
 --
 ALTER TABLE `kunden`
-  ADD PRIMARY KEY (`K_ID`);
+  ADD PRIMARY KEY (`K_ID`),
+  ADD KEY `O_ID` (`O_ID`),
+  ADD KEY `B_ID` (`B_ID`),
+  ADD KEY `L_ID` (`L_ID`);
 
 --
 -- Indexes for table `land`
@@ -225,13 +294,15 @@ ALTER TABLE `land`
 -- Indexes for table `mitarbeiter`
 --
 ALTER TABLE `mitarbeiter`
-  ADD PRIMARY KEY (`M_ID`);
+  ADD PRIMARY KEY (`M_ID`),
+  ADD KEY `B_ID` (`B_ID`);
 
 --
 -- Indexes for table `ort`
 --
 ALTER TABLE `ort`
-  ADD PRIMARY KEY (`O_ID`);
+  ADD PRIMARY KEY (`O_ID`),
+  ADD KEY `L_ID` (`L_ID`);
 
 --
 -- Indexes for table `produkte`
@@ -243,7 +314,8 @@ ALTER TABLE `produkte`
 -- Indexes for table `produktpos`
 --
 ALTER TABLE `produktpos`
-  ADD PRIMARY KEY (`PPOS_ID`);
+  ADD PRIMARY KEY (`PPOS_ID`),
+  ADD KEY `P_ID` (`P_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -289,6 +361,48 @@ ALTER TABLE `produkte`
 --
 ALTER TABLE `produktpos`
   MODIFY `PPOS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `anmeldedaten`
+--
+ALTER TABLE `anmeldedaten`
+  ADD CONSTRAINT `anmeldedaten_ibfk_1` FOREIGN KEY (`K_ID`) REFERENCES `kunden` (`K_ID`);
+
+--
+-- Constraints for table `bestellungen`
+--
+ALTER TABLE `bestellungen`
+  ADD CONSTRAINT `bestellungen_ibfk_1` FOREIGN KEY (`PPOS_ID`) REFERENCES `produktpos` (`PPOS_ID`);
+
+--
+-- Constraints for table `kunden`
+--
+ALTER TABLE `kunden`
+  ADD CONSTRAINT `kunden_ibfk_1` FOREIGN KEY (`O_ID`) REFERENCES `ort` (`O_ID`),
+  ADD CONSTRAINT `kunden_ibfk_2` FOREIGN KEY (`B_ID`) REFERENCES `bestellungen` (`B_ID`),
+  ADD CONSTRAINT `kunden_ibfk_3` FOREIGN KEY (`L_ID`) REFERENCES `land` (`L_ID`);
+
+--
+-- Constraints for table `mitarbeiter`
+--
+ALTER TABLE `mitarbeiter`
+  ADD CONSTRAINT `mitarbeiter_ibfk_1` FOREIGN KEY (`B_ID`) REFERENCES `bestellungen` (`B_ID`);
+
+--
+-- Constraints for table `ort`
+--
+ALTER TABLE `ort`
+  ADD CONSTRAINT `ort_ibfk_1` FOREIGN KEY (`L_ID`) REFERENCES `land` (`L_ID`);
+
+--
+-- Constraints for table `produktpos`
+--
+ALTER TABLE `produktpos`
+  ADD CONSTRAINT `produktpos_ibfk_1` FOREIGN KEY (`P_ID`) REFERENCES `produkte` (`P_ID`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
