@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 
 if (isset($_SESSION['lastvisit'])) {
@@ -10,8 +10,9 @@ if (isset($_SESSION['lastvisit'])) {
         $_SESSION['loggedin'] = 0;
 }
 
+#$_SESSION['loggedin'] = 1;
  #$_SESSION['Warenkorb'][]= 1337;
-# $_SESSION['Warenkorb'][] = 2525;
+#$_SESSION['Warenkorb'][] = 2525;
    #unset($_SESSION['Warenkorb'][0]);
 $_SESSION['lastvisit'] = time();
 ?>
