@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2016 at 05:17 PM
+-- Generation Time: Jun 23, 2016 at 09:39 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -34,14 +35,6 @@ CREATE TABLE `anmeldedaten` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `anmeldedaten`:
---   `K_ID`
---       `kunden` -> `K_ID`
---   `K_ID`
---       `kunden` -> `K_ID`
---
-
---
 -- Dumping data for table `anmeldedaten`
 --
 
@@ -58,14 +51,6 @@ CREATE TABLE `bestellungen` (
   `B_ID` int(11) NOT NULL,
   `PPOS_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS FOR TABLE `bestellungen`:
---   `PPOS_ID`
---       `produktpos` -> `PPOS_ID`
---   `PPOS_ID`
---       `produktpos` -> `PPOS_ID`
---
 
 --
 -- Dumping data for table `bestellungen`
@@ -98,22 +83,6 @@ CREATE TABLE `kunden` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `kunden`:
---   `B_ID`
---       `bestellungen` -> `B_ID`
---   `L_ID`
---       `land` -> `L_ID`
---   `O_ID`
---       `ort` -> `O_ID`
---   `O_ID`
---       `ort` -> `O_ID`
---   `B_ID`
---       `bestellungen` -> `B_ID`
---   `L_ID`
---       `land` -> `L_ID`
---
-
---
 -- Dumping data for table `kunden`
 --
 
@@ -130,10 +99,6 @@ CREATE TABLE `land` (
   `L_ID` int(11) NOT NULL,
   `Name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS FOR TABLE `land`:
---
 
 --
 -- Dumping data for table `land`
@@ -162,14 +127,6 @@ CREATE TABLE `mitarbeiter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `mitarbeiter`:
---   `B_ID`
---       `bestellungen` -> `B_ID`
---   `B_ID`
---       `bestellungen` -> `B_ID`
---
-
---
 -- Dumping data for table `mitarbeiter`
 --
 
@@ -188,14 +145,6 @@ CREATE TABLE `ort` (
   `PLZ` int(255) NOT NULL,
   `L_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS FOR TABLE `ort`:
---   `L_ID`
---       `land` -> `L_ID`
---   `L_ID`
---       `land` -> `L_ID`
---
 
 --
 -- Dumping data for table `ort`
@@ -220,16 +169,12 @@ CREATE TABLE `produkte` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELATIONS FOR TABLE `produkte`:
---
-
---
 -- Dumping data for table `produkte`
 --
 
 INSERT INTO `produkte` (`P_ID`, `Name`, `Preis`, `Beschreibung`, `Bild`) VALUES
-(1, 'Produkt 1', 29.99, 'Geiler Scheiß', 'C:\\xampp\\htdocs\\Brainhouse\\Produktbilder\\Bsp1.jpg'),
-(2, 'Produkt 2', 9999.99, 'Noch Geilerer Scheiß', 'C:\\xampp\\htdocs\\Brainhouse\\Produktbilder\\Bsp2.jpg');
+(1, 'Produkt 1', 29.99, 'Geiler Scheiß', '/Brainhouse/Produktbilder/Bsp1.jpg'),
+(2, 'Produkt 2', 9999.99, 'Noch Geilerer Scheiß', '/Brainhouse/Produktbilder/Bsp2.jpg');
 
 -- --------------------------------------------------------
 
@@ -241,14 +186,6 @@ CREATE TABLE `produktpos` (
   `PPOS_ID` int(11) NOT NULL,
   `P_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONS FOR TABLE `produktpos`:
---   `P_ID`
---       `produkte` -> `P_ID`
---   `P_ID`
---       `produkte` -> `P_ID`
---
 
 --
 -- Dumping data for table `produktpos`
@@ -402,6 +339,7 @@ ALTER TABLE `ort`
 --
 ALTER TABLE `produktpos`
   ADD CONSTRAINT `produktpos_ibfk_1` FOREIGN KEY (`P_ID`) REFERENCES `produkte` (`P_ID`);
+SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
