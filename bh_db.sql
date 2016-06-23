@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2016 at 09:39 AM
+-- Generation Time: Jun 23, 2016 at 12:01 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `anmeldedaten` (
   `A_ID` int(11) NOT NULL,
   `K_ID` int(11) NOT NULL,
-  `Nutzername` text NOT NULL,
-  `Passwort` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Nutzername` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Passwort` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `anmeldedaten`
@@ -50,7 +50,7 @@ INSERT INTO `anmeldedaten` (`A_ID`, `K_ID`, `Nutzername`, `Passwort`) VALUES
 CREATE TABLE `bestellungen` (
   `B_ID` int(11) NOT NULL,
   `PPOS_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `bestellungen`
@@ -67,27 +67,27 @@ INSERT INTO `bestellungen` (`B_ID`, `PPOS_ID`) VALUES
 --
 
 CREATE TABLE `kunden` (
-  `Vorname` text NOT NULL,
   `K_ID` int(11) NOT NULL,
   `O_ID` int(11) NOT NULL,
   `B_ID` int(11) DEFAULT NULL,
-  `Nachname` text NOT NULL,
+  `Vorname` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Nachname` varchar(100) COLLATE utf8_bin NOT NULL,
   `L_ID` int(11) NOT NULL,
   `B-Day` date NOT NULL,
-  `Straße` text NOT NULL,
-  `Hausnummer` text NOT NULL,
+  `Straße` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Hausnummer` varchar(25) COLLATE utf8_bin NOT NULL,
   `Tel. Nr.` int(255) DEFAULT NULL,
   `Log-In` tinyint(1) NOT NULL,
   `Newsletter` tinyint(1) NOT NULL,
-  `e-mail` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `e-mail` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `kunden`
 --
 
-INSERT INTO `kunden` (`Vorname`, `K_ID`, `O_ID`, `B_ID`, `Nachname`, `L_ID`, `B-Day`, `Straße`, `Hausnummer`, `Tel. Nr.`, `Log-In`, `Newsletter`, `e-mail`) VALUES
-('jodel', 1, 2, 1, 'meister', 1, '1995-04-22', 'jaja', '22b', NULL, 1, 1, 'aefawf@homo.de');
+INSERT INTO `kunden` (`K_ID`, `O_ID`, `B_ID`, `Vorname`, `Nachname`, `L_ID`, `B-Day`, `Straße`, `Hausnummer`, `Tel. Nr.`, `Log-In`, `Newsletter`, `e-mail`) VALUES
+(1, 2, 1, 'jodel', 'meister', 1, '1995-04-22', 'jaja', '22b', NULL, 1, 1, 'aefawf@homo.de');
 
 -- --------------------------------------------------------
 
@@ -97,8 +97,8 @@ INSERT INTO `kunden` (`Vorname`, `K_ID`, `O_ID`, `B_ID`, `Nachname`, `L_ID`, `B-
 
 CREATE TABLE `land` (
   `L_ID` int(11) NOT NULL,
-  `Name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Name` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `land`
@@ -117,14 +117,14 @@ INSERT INTO `land` (`L_ID`, `Name`) VALUES
 
 CREATE TABLE `mitarbeiter` (
   `M_ID` int(11) NOT NULL,
-  `Vorname` text NOT NULL,
-  `Nachname` text NOT NULL,
+  `Vorname` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Nachname` varchar(100) COLLATE utf8_bin NOT NULL,
   `Geburtstag` date NOT NULL,
-  `e-mail` text NOT NULL,
+  `e-mail` varchar(100) COLLATE utf8_bin NOT NULL,
   `online-status` tinyint(1) NOT NULL,
-  `Tel. Nr.` text NOT NULL,
+  `Tel. Nr.` varchar(100) COLLATE utf8_bin NOT NULL,
   `B_ID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `mitarbeiter`
@@ -141,18 +141,18 @@ INSERT INTO `mitarbeiter` (`M_ID`, `Vorname`, `Nachname`, `Geburtstag`, `e-mail`
 
 CREATE TABLE `ort` (
   `O_ID` int(11) NOT NULL,
-  `Name` text NOT NULL,
-  `PLZ` int(255) NOT NULL,
+  `Name` varchar(100) COLLATE utf8_bin NOT NULL,
+  `PLZ` varchar(255) COLLATE utf8_bin NOT NULL,
   `L_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `ort`
 --
 
 INSERT INTO `ort` (`O_ID`, `Name`, `PLZ`, `L_ID`) VALUES
-(1, 'Neu-Ulm', 89231, 1),
-(2, 'Schwaebisch Gmuend', 73525, 1);
+(1, 'Neu-Ulm', '89231', 1),
+(2, 'Schwaebisch Gmuend', '73525', 1);
 
 -- --------------------------------------------------------
 
@@ -162,11 +162,11 @@ INSERT INTO `ort` (`O_ID`, `Name`, `PLZ`, `L_ID`) VALUES
 
 CREATE TABLE `produkte` (
   `P_ID` int(11) NOT NULL,
-  `Name` text NOT NULL,
+  `Name` varchar(100) COLLATE utf8_bin NOT NULL,
   `Preis` float NOT NULL,
-  `Beschreibung` text NOT NULL,
-  `Bild` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Beschreibung` text COLLATE utf8_bin NOT NULL,
+  `Bild` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `produkte`
@@ -185,7 +185,7 @@ INSERT INTO `produkte` (`P_ID`, `Name`, `Preis`, `Beschreibung`, `Bild`) VALUES
 CREATE TABLE `produktpos` (
   `PPOS_ID` int(11) NOT NULL,
   `P_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `produktpos`
