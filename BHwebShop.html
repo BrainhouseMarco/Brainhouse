@@ -40,6 +40,7 @@
                 })
             });
         </script>
+        
         <title>brainhouse - SHOP</title>
     </head>
     
@@ -80,7 +81,7 @@
         </div>
         <div id="logindiv" class="anmeldung" style="display: none;">
             <div id="login" style=" display: none; margin-left: 20%; margin-right: 20%;">
-                <form action="" id="login">
+                <form action="datenverarbeitung.php" method="dbDatenAbgleich()" id="login"> <!--Parameteruebergabe??-->
                     <input type="text" id="emailInput" maxlength="30" placeholder="E-mail" class="inPut">
                     <br>
                     <input type="password" id="passInput" maxlength="30" placeholder="Passwort" class="inPut">
@@ -92,7 +93,7 @@
             
             <div id="regist" style="display: none; margin-left: 20%; margin-right: 20%;">
                 <h1>Registrierung</h1>
-                <form>
+                <form action="datenverarbeitung.php" method="dbDatenNeuRegistrierung()"> <!--Parameteruebergabe??-->
                     <fieldset>
                         <input type="radio" id="privat" value="Privatperson" name="kunde">
                         <label for="privat">Privatperson</label>
@@ -134,27 +135,51 @@
         </div>
 
         <div class="middle" style="">
-            <div style="float: left;"> 
+            <div style="float: left;">                 
                 <div class="dropdown">  
-                    <button class="dropbtn" style="display: none;">SmartHome</button>
-                    <div class="dropdown-content">                         
-                        <a class="normal" onclick=""></a> 
-                    </div>           
+                    <button class="dropbtn">Effizienzprodukte</button>          
                 </div>
                 <div class="dropdown">  
-                    <button class="dropbtn" style="display: none;">eMobility</button>
-                    <div class="dropdown-content">                         
-                        <a class="normal" onclick=""></a> 
-                    </div>           
+                    <button class="dropbtn">eMobility</button>         
                 </div>
                 <div class="dropdown">  
-                    <button class="dropbtn" style="display: none;">Effizienzprodukte</button>
+                    <button class="dropbtn">SmartHome</button>
                     <div class="dropdown-content">                         
-                        <a class="normal" onclick=""></a> 
+                        <a class="normal" onclick="">Alle Produkte</a>
+                        <hr>
+                        <a class="normal" style="color: darkgray;">Energie</a>
+                        <a class="normal" style="color: darkgray;">Komfort</a>
+                        <a class="normal" style="color: darkgray">Sicherheit</a>
+                        <a class="normal" style="color: darkgray">Komplettlösungen</a>
+                        <a class="normal" style="color: darkgray">Energie</a>
+                        <hr>
+                        <a class="normal" style="color: darkgray">Zubehör</a>
+                        <a class="normal" style="color: darkgray">Apps</a>
+                        <hr>
+                        <a class="normal" style="color: darkgray">Dienstleistungen</a>
+                        <a class="normal">Informationstermin buchen</a>
+                        
                     </div>           
                 </div>
             </div>
-            // hier können die Produkte stehen
+            <br>
+            <br>
+            <br>
+            <div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">
+                01Hallo Welt ich bin ein Produkt
+                <div id="produktleftInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;"></div>
+                <div></div>
+            </div>
+            <div id="produktright" style="float: right; background-color: #e27d2f; width: 35%; height:auto; margin-right: 10%;">
+                02Hallo Welt ich bin ein Produkt
+                <div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">
+                    brainhouse SmartHome Starterpaket<br>
+                    319,00€<br>
+                    <small>Lieferbar innerhalb von 2-7 Werktagen</small>
+                </div>
+                <button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>
+            </div>
+            <br>
         </div>
                 
         <div class="bottom">
