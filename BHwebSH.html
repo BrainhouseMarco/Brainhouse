@@ -5,48 +5,77 @@
         <meta name="description" content="smarthome Technologie">
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="BHweb.css">
-        <title>brainhouse - Was ist Smarthome?</title>
+        <link rel="stylesheet" type="text/css" href="css/BHweb.css">
+        <title>brainhouse - SMARTHOME</title>
     </head>
 
     <body style=" background-color: ">
         <div class="top">
             <div id="logo">
                 <a class="normal" href="BHwebHome.html"><img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
-            </div>
-            <div id="menue">
-                <div class="dropdown">
+            </div>            
+            <div style="float: right;">
+                <div class="dropdown">  
                     <button class="dropbtn">Kontakt</button>
-                    <div class="dropdown-content">
-                        <a class="normal" href="BHwebKontakt.html" hidden="">Ansprechpartner</a>
-                        <a class="normal" href="BHwebPartner.html" hidden="">Unsere Partner</a>
-                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de" hidden=""><img src="data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
-                        <a class="normal" href="https://www.facebook.com/FacebookDeutschland" hidden=""><img src="data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
-                    </div>
-                </div>
-                <div class="dropdown">
+                    <div class="dropdown-content"> 
+                        <a class="normal" href="BHwebKunden.html">Standorte</a> 
+                        <a class="normal" href="BHwebKontakt.html">Ansprechpartner</a> 
+                        <a class="normal" href="" style="color: darkgray;">Fragen und Antworten</a> 
+                        <a class="normal" href="" style="color: darkgray;">Informationen zum Vertrieb</a>  
+                        <a class="normal" href="BHwebPartner.html">Unsere Partner</a>
+                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
+                        <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts"><img src="data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
+                    </div>           
+                </div> 
+                <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
-                    <div class="dropdown-content">
+                    <div class="dropdown-content">                         
                         <a class="normal" href="BHwebShop.html" hidden="">Shop</a>
                     </div>
-                </div>
-                 <div class="dropdown">
+                </div> 
+                 <div class="dropdown">  
                     <button class="dropbtn">News</button>
                     <div class="dropdown-content">
-                        <a class="normal" href="" hidden="BHwebSH.html">Was ist SmartHome</a>
-                        <a class="normal" href="" hidden="">Newsletter Abo</a>
-                        <a class="normal" href="" hidden="BHwebReferenzen.html">Kundenreferenzen</a>
-                    </div>
-                </div>
+                        <a class="normal" href="BHwebSH.html">Was ist SmartHome</a>
+                        <a class="normal" href="BHwebReferenzen.html">Kundenreferenzen</a>
+                        <a class="normal" href="" style="color: darkgray;">Presse</a>
+                        <a id="newsletterA" class="normal" href="">Newsletter Abo</a> 
+                    </div>           
+                </div> 
                 <div class="dropdown">
                     <button class="dropbtn">Das Unternehmen</button>
-                    <div class="dropdown-content" >
-                        <a class="normal"href="BHwebLeitbild.html">Leitbild</a>
-                        <a class="normal"href="BHwebHistorie.html">Firmenhistorie</a>
-                        <a class="normal"href="BHwebVorstand.html">Unser Vorstand</a>
-                        <a class="normal"href="BHwebKunden.html"> Unsere Kunden</a>
+                    <div class="dropdown-content" >                        
+                        <a class="normal" href="" style="color: darkgray;">Unsere Lösungen</a>
+                        <a class="normal" href="BHwebLeitbild.html">Leitbild</a>
+                        <a class="normal" href="BHwebHistorie.html">Firmenhistorie</a>
+                        <a class="normal" href="BHwebVorstand.html">Unser Vorstand</a>
+                        <a class="normal" href="BHwebKunden.html"> Unsere Kunden</a>
                     </div>
-                </div>
+                </div>            
+            </div>
+        </div>
+        
+        <div id="newsletterDiv" class="anmeldung" style="display: none;">
+            <div style="margin-left: 20%; margin-right: 20%;">
+                <h1>Newletter Abonnement</h1>
+                <form>
+                    <fieldset>
+                        <input type="radio" id="privat" value="Privatperson" name="kunde">
+                        <label for="privat">Privatperson</label>
+                        <input type="radio" id="unternehmen" value="Unternehmen" name="kunde">
+                        <label for="unternehmen">Unternehmen</label>
+                    </fieldset>
+                    <select name="geschlecht">
+                        <option>Frau</option>
+                        <option>Herr</option>
+                    </select>
+                    <input type="text" id="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
+                    <input type="text" id="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
+                    <br>
+                    <input type="email" id="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
+                    <br>
+                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                </form>
             </div>
         </div>
 
@@ -55,17 +84,17 @@
 
         <div class="middle">
        <h1>Smarthome Allgemein</h1><br>
-       Smart Home dient als Oberbegriff f&uuml;r technische Verfahren und Systeme in Wohnr&auml;umen und -h&auml;usern, in deren Mittelpunkt eine Erh&ouml;hung           von Wohn- und Lebensqualit&auml;t, Sicherheit und effizienter Energienutzung auf Basis vernetzter und fernsteuerbarer Ger&auml;te und                    Installationen sowie automatisierbarer Abl&auml;ufe steht.
+       Smart Home dient als Oberbegriff für technische Verfahren und Systeme in Wohnräumen und -häusern, in deren Mittelpunkt eine Erhöhung von Wohn- und Lebensqualität, Sicherheit und effizienter Energienutzung auf Basis vernetzter und fernsteuerbarer Geräte und Installationen sowie automatisierbarer Abläufe steht.
        <br>
-       Unter diesen Begriff f&auml;llt sowohl die Vernetzung von Haustechnik und Haushaltsger&auml;ten (zum Beispiel Lampen, Jalousien, Heizung, aber           auch Herd, K&uuml;hlschrank und Waschmaschine), als auch die Vernetzung von Komponenten der Unterhaltungselektronik (etwa die zentrale              Speicherung und heimweite Nutzung von Video- und Audio-Inhalten).
+       Unter diesen Begriff fällt sowohl die Vernetzung von Haustechnik und Haushaltsgeräten (zum Beispiel Lampen, Jalousien, Heizung, aber auch Herd, Kühlschrank und Waschmaschine), als auch die Vernetzung von Komponenten der Unterhaltungselektronik (etwa die zentrale Speicherung und heimweite Nutzung von Video- und Audio-Inhalten).
        <br>
-       Von einem Smart Home spricht man insbesondere, wenn s&auml;mtliche im Haus verwendeten Leuchten, Taster und Ger&auml;te untereinander vernetzt           sind, Ger&auml;te Daten speichern und eine eigene Logik abbilden k&ouml;nnen. Ger&auml;te sind teilweise auch getagged, was bedeutet, dass zu den             Ger&auml;ten im Smart Home Informationen zum Beispiel &uuml;ber Hersteller, Produktnamen und Leistung hinterlegt sind. Dabei besitzt das Smart           Home eine eigene Programmierschnittstelle, die (auch) via Internet angesprochen und &uuml;ber erweiterbare Apps gesteuert werden kann.
+       Von einem Smart Home spricht man insbesondere, wenn sämtliche im Haus verwendeten Leuchten, Taster und Geräte untereinander vernetzt sind, Geräte Daten speichern und eine eigene Logik abbilden können. Geräte sind teilweise auch getagged, was bedeutet, dass zu den Geräten im Smart Home Informationen zum Beispiel über Hersteller, Produktnamen und Leistung hinterlegt sind. Dabei besitzt das SmartHome eine eigene Programmierschnittstelle, die (auch) via Internet angesprochen und über erweiterbare Apps gesteuert werden kann.
        <br><br>
 
        <h1>Smarthome bei der Brainhouse GmbH</h1><br>
-       Die Brainhouse GmbH entwickelt alle Komponenten im eigenen Haus. Aufsetzte f&uuml;r Lichter, Steckdosen, heizungen, Roll&auml;den etc. werden in         unserem eigenen Werk gegfertigt und nach deutschen Standards &uuml;berpr&uuml;ft. Die Software Komponenten werden durch unsere speziallisierte
-       Entwicklungsabteilung f&uuml;r iOS, Windows und Android Ger&auml;te entwickelt und laufend auf dem aktuellsten Stand gehalten. Somit ist eine
-       Nachhaltigkeit unserer Produkte f&uuml;r sie und weitere Generationen gesichert.
+       Die Brainhouse GmbH entwickelt alle Komponenten im eigenen Haus. Aufsetzte für Lichter, Steckdosen, heizungen, Rolläden etc. werden in unserem eigenen Werk gegfertigt und nach deutschen Standards überprüft. Die Software Komponenten werden durch unsere speziallisierte
+       Entwicklungsabteilung für iOS, Windows und Android Geräte entwickelt und laufend auf dem aktuellsten Stand gehalten. Somit ist eine
+       Nachhaltigkeit unserer Produkte für sie und weitere Generationen gesichert.
 
 
         </div>
