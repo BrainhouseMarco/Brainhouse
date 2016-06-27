@@ -19,8 +19,9 @@ function sessionEnde($cookie_name){
 //Datenbankfkt______________________________________________
 function dbVerbindungAufbauen(){
     $servername = "localhost";
-    $username = "";
+    $username = "root";
     $password = "";
+    //db name ?
 
     //Verbindung aufbauen
     $conn = new mysqli($servername, $username, $password);

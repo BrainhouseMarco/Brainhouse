@@ -116,6 +116,31 @@
                 <br>
                 <button class="linkButton">MEHR ERFAHREN</button>
             </div>
+            <div id="kiontaktDiv" class="anmeldung" style="display: none;">
+            <div style="margin-left: 20%; margin-right: 20%;">
+                <h1>Newletter Abonnement</h1>
+                <form action="datenverarbeitung.php" method="dbDatenNeuNewsletter()"> <!--Parameteruebergabe??-->
+                    <fieldset>
+                        <input type="radio" id="privat" value="Privatperson" name="kunde">
+                        <label for="privat">Privatperson</label>
+                        <input type="radio" id="unternehmen" value="Unternehmen" name="kunde">
+                        <label for="unternehmen">Unternehmen</label>
+                    </fieldset>
+                    <select name="geschlecht">
+                        <option>Frau</option>
+                        <option>Herr</option>
+                    </select>
+                    <input type="text" id="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
+                    <input type="text" id="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
+                    <br>
+                    <input type="email" id="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
+                    <br>
+                    <input type="text" id="emailInput" placeholder="E-mail" maxlength="250" class="inPut" style="width: 86%;">
+                    <br>
+                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                </form>
+            </div>
+        </div>
             <div id="middleDiv">
                 <img src="data/images/icons/support2.PNG" alt="brainhouse support" style="width:47px; height:54px;">
                 <h2 style="text-align: left; color: #ffffff">UNSERE<br> TECHNIK-HOTLINE</h2>
