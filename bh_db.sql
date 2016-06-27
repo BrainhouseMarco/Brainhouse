@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2016 at 12:01 PM
+-- Generation Time: Jun 27, 2016 at 12:38 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -76,18 +76,21 @@ CREATE TABLE `kunden` (
   `B-Day` date NOT NULL,
   `Straße` varchar(100) COLLATE utf8_bin NOT NULL,
   `Hausnummer` varchar(25) COLLATE utf8_bin NOT NULL,
-  `Tel. Nr.` int(255) DEFAULT NULL,
+  `Tel. Nr.` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `Log-In` tinyint(1) NOT NULL,
   `Newsletter` tinyint(1) NOT NULL,
-  `e-mail` varchar(100) COLLATE utf8_bin NOT NULL
+  `e-mail` varchar(100) COLLATE utf8_bin NOT NULL,
+  `Privatperson` tinyint(1) NOT NULL DEFAULT '0',
+  `Geschlecht` tinyint(1) NOT NULL DEFAULT '0',
+  `Firma` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `kunden`
 --
 
-INSERT INTO `kunden` (`K_ID`, `O_ID`, `B_ID`, `Vorname`, `Nachname`, `L_ID`, `B-Day`, `Straße`, `Hausnummer`, `Tel. Nr.`, `Log-In`, `Newsletter`, `e-mail`) VALUES
-(1, 2, 1, 'jodel', 'meister', 1, '1995-04-22', 'jaja', '22b', NULL, 1, 1, 'aefawf@homo.de');
+INSERT INTO `kunden` (`K_ID`, `O_ID`, `B_ID`, `Vorname`, `Nachname`, `L_ID`, `B-Day`, `Straße`, `Hausnummer`, `Tel. Nr.`, `Log-In`, `Newsletter`, `e-mail`, `Privatperson`, `Geschlecht`, `Firma`) VALUES
+(1, 2, 1, 'jodel', 'meister', 1, '1995-04-22', 'jaja', '22b', NULL, 1, 1, 'aefawf@homo.de', 0, 0, '');
 
 -- --------------------------------------------------------
 
