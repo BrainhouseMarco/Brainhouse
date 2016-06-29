@@ -21,10 +21,10 @@ function dbVerbindungAufbauen(){
     $servername = "localhost";
     $username = "root";
     $password = "";
-    //db name ?
+    $dbname = "brainhouse"; 
 
     //Verbindung aufbauen
-    $conn = new mysqli($servername, $username, $password);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
     //Verbindung überprüfen
     if(!$conn || mysqli_connect_error()){
@@ -35,7 +35,15 @@ function dbVerbindungAufbauen(){
 }
 
 //Userdaten
-function dbDatenNeuNewsletter($art, $geschlecht ,$vorname, $nachname, $unternehmensname, $email){
+function dbDatenNeuNewsletter(){
+    
+    //Attribute
+    $art = $_POST["artInput"]; 
+    $geschlecht = $_POST["geschlechtInput"];
+    $vorname = $_POST["vornameInput"];
+    $nachname = $_POST["nachnameInput"]; 
+    $unternehmensname = $_POST["unternehmensnameInput"]; 
+    $email = $_POST["emailInput"];
     
     //filtern nach HTML tags
     $sicherArt = filter_var($art, FILTER_SANITIZE_STRING);
@@ -51,15 +59,28 @@ function dbDatenNeuNewsletter($art, $geschlecht ,$vorname, $nachname, $unternehm
         die("!Error: Es konnte keine Verbindung zur DB erzeugt werden.<br> . $conn->connect_error");
     }
     
-    $stmt = $conn->prepare("INSERT INTO ___ (, , , , , ) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("s,s,s,s,s,s", $sicherArt, $sicherGeschlecht, $sicherVorname, $sicherNachname, $sicherUnternehmensname, $sicherEmail);
+    $stmt = $conn->prepare("INSERT INTO kunden ("K_ID", "O_ID", "B_ID", "Vorname", "Nachname", "L_ID", "B-Day", "Straße", "Hausnummer", "Tel.Nr.", "Log-In", "Newletter", "email", "Privatperson", "Geschlecht", "Firma" ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,)");
+    $stmt->bind_param("i,i,i,s,s,i,,s,s,s,,s,s,,,s", null, null, null, $sicherVorname, $sicherNachname, null, null, null, null, null, false, true, $sicherEmail, $sicherArt, $sicherGeschlecht, $sicherUnternehmensname); //? typ
     
     $stmt->close();
-    $conn->close();
-    
+    $conn->close();   
 }
 
-function dbDatenNeuRegistrierung($art, $geschlecht ,$vorname, $nachname, $unternehmensname, $gebDatum, $strasse, $hNr, $plz, $stadt, $bundesland, $telefon, $email){
+function dbDatenNeuRegistrierung(){
+
+    //Attribute
+    $art = $_POST["artInput"];
+    $geschlecht = $_POST["geschlechtInput"];
+    $vorname = $_POST["vornameInput"]; 
+    $nachname = $_POST["nachnameInput"];
+    $unternehmensname = $_POST["unternehmensnameInput"];
+    $gebDatum = $_POST["gebTagInput"];
+    $strasse = $_POST["strasseInput"]; 
+    $hNr = $_POST["hnrInput"];
+    $plz = $_POST["plzInput"];
+    $stadt = $_POST["stadtInput"]; 
+    $telefon = $_POST["telNrInput"]; 
+    $email = $_POST["emailInput"];
     
     //filtern nach HTML tags   
     $sicherArt = filter_var($art, FILTER_SANITIZE_STRING);
@@ -82,15 +103,18 @@ function dbDatenNeuRegistrierung($art, $geschlecht ,$vorname, $nachname, $untern
         die("!Error: Es konnte keine Verbindung zur DB erzeugt werden.<br> . $conn->connect_error");
     }
     
-    $stmt = $conn->prepare("INSERT INTO kunden (, , , , , , , , , , , , ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("s,s,s,s,s,_,s,i,s,s,s,s,s ", $sicherArt, $sicherGeschlecht, $sicherVorname, $sicherNachname, $sicherUnternehmensname, $sicherGebDatum, $sicherStrasse, $sicherHnr, $sicherPLZ, $sicherStadt, $sicherBundesland, $sicherTelefon, $sicherEmail);
-    
+    $stmt = $conn->prepare("INSERT INTO kunden ("K_ID", "O_ID", "B_ID", "Vorname", "Nachname", "L_ID", "B-Day", "Straße", "Hausnummer", "Tel.Nr.", "Log-In", "Newletter", "email", "Privatperson", "Geschlecht", "Firma" ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,)");
+    $stmt->bind_param("i,i,i,s,s,i,,s,s,s,,s,s,,,s", null, null, null, $sicherVorname, $sicherNachname, null, $sicherGebDatum, $sicherStrasse, $sicherHnr, $sicherTelefon, true, , $sicherEmail, $sicherArt, $sicherGeschlecht, $sicherUnternehmensname); //? typ //Tabelle Anmeldedaten?    
     $stmt->close();
     $conn->close();
     
 }
 
-function dbDatenAbgleich($email, $pass){
+function dbDatenAbgleich(){ //Login
+    
+    //Attribute
+    $email = $_POST["emailInput"]; 
+    $pass  = $_POST["passInput"];
     
     //filtern nach HTML tags 
     $sicherEmail = filter_var($email, FILTER_SANITIZE_STRING); 
@@ -102,11 +126,11 @@ function dbDatenAbgleich($email, $pass){
         die("!Error: Es konnte keine Verbindung zur DB erzeugt werden.<br> . $conn->connect_error");
     }
     
-    $sql = "SELECT FROM ";
+    $sql = "SELECT Nutzername, Passwort FROM anmeldedaten";
     $erg = mysqli_query($conn, $sql);
     if(mysqli_num_rows($erg) > 0){
         while($row = $erg->fetch_assoc()){
-            if($row[""] ==  $sicherEmail && $row[""] == $sicherPass){
+            if($row["Nutzername"] ==  $sicherEmail && $row["Passwort"] == $sicherPass){
                 $conn->close();
                 return true;
             }

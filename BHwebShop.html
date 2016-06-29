@@ -17,8 +17,7 @@
                         $("#regist").toggle();
                     } else {
                         $("#login").toggle();
-                    }
-                        
+                    }    
                 });
                 $("#registbtn").click(function(){
                     $("#login").toggle();
@@ -78,10 +77,10 @@
         </div>
         <div id="logindiv" class="anmeldung" style="display: none;">
             <div id="login" style=" display: none; margin-left: 20%; margin-right: 20%;">
-                <form action="datenverarbeitung.php" method="dbDatenAbgleich()" id="login"> <!--Parameteruebergabe??-->
-                    <input type="text" id="emailInput" maxlength="30" placeholder="E-mail" class="inPut">
+                <form action="datenverarbeitung.php" method="post" id="login"> <!--dbDatenAbgleich()-->
+                    <input type="text" name="emailInput" maxlength="30" placeholder="E-mail" class="inPut">
                     <br>
-                    <input type="password" id="passInput" maxlength="30" placeholder="Passwort" class="inPut">
+                    <input type="password" name="passInput" maxlength="30" placeholder="Passwort" class="inPut">
                     <br>
                     <button id="loginbtn" type="submit" class="subbtn">login</button>
                 </form>
@@ -91,37 +90,37 @@
             <div id="regist" style="display: none; margin-left: 20%; margin-right: 20%;">
                 <h1>Registrierung</h1>
                 <form action="datenverarbeitung.php" method="dbDatenNeuRegistrierung()"> <!--Parameteruebergabe??-->
-                    <fieldset>
+                    <fieldset name="artInput">
                         <input type="radio" id="privat" value="Privatperson" name="kunde">
                         <label for="privat">Privatperson</label>
                         <input type="radio" id="unternehmen" value="Unternehmen" name="kunde">
                         <label for="unternehmen">Unternehmen</label>
                     </fieldset>
-                    <select name="geschlecht">
+                    <select name="geschlechtInput">
                         <option>Frau</option>
                         <option>Herr</option>
                     </select>
-                    <input type="text" id="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;"> 
-                    <input type="text" id="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
+                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;"> 
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
                     <br>
-                    <input type="text" id="unternehmensnameInput" placeholder="Firma" maxlength="60" class="inPut" style="width: 490px;">
+                    <input type="text" name="unternehmensnameInput" placeholder="Firma" maxlength="60" class="inPut" style="width: 490px;">
                     <br>
-                    <input type="date" id="gebTagInput" placeholder="Geburtsdatum, z.Bsp. 01.01.2016" maxlength="10" class="inPut" style="width: 490px;">
+                    <input type="date" name="gebTagInput" placeholder="Geburtsdatum, z.Bsp. 01.01.2016" maxlength="10" class="inPut" style="width: 490px;">
                     <br>
-                    <input type="text" id="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 445px;">
-                    <input type="text" id="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30px;">
+                    <input type="text" name="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 445px;">
+                    <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30px;">
                     <br>
-                    <input type="text" id="plzInput" placeholder="PLZ" maxlength="5" class="inPut">
-                    <input type="text" id="stadtInput" placeholder="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >
+                    <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut">
+                    <input type="text" name="stadtInput" placeholder="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >
                     <br>
-                    <input type="tel" id="telNrInput" placeholder="Telefon" maxlength="30" class="inPut">
-                    <input type="email" id="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;"> 
+                    <input type="tel" name="telNrInput" placeholder="Telefon" maxlength="30" class="inPut">
+                    <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;"> 
                     <br>
                     <br>
-                    <input type="checkbox" id="agb" value="AGB zustimmen">
+                    <input type="checkbox" name="agbInput" value="AGB zustimmen">
                     <label for="agb">Ich bestätige hier mit die brainhouse <a class="normal" href="">AGB</a></label>
                     <br>
-                    <input type="checkbox" id="newsletter" value="Newsletter bestellen">
+                    <input type="checkbox" name="newsletterInput" value="Newsletter bestellen">
                     <label for="newsletter">Ich möchte den brainhouse E-mail Newsletter erhalten</label>
                     <br>
                     <br>
@@ -162,6 +161,45 @@
             <br>
             <br>
             <br>
+            <div>  
+		      <?php  
+			     $pdo = new PDO('mysql:host=localhost;dbname=bh_db', 'root', '');
+                 $tmp = 1;
+			     if ( $pdo )  
+ 			    {  
+ 				   echo 'Verbindung erfolgreich: ';  
+ 			    }  
+			    else  
+ 			    {  
+ 				   die('keine Verbindung möglich: ' . mysqli_error());  
+ 			    }  
+ 			    foreach ($pdo->query('SELECT * FROM produkte;') as $entry){ 
+                    if($tmp%2 == 1){
+                        echo '<div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">';
+                        echo '<img src="'.$entry['Bild'].'" alt="SmartHome Starterpaket" style="width:100%; height:auto;">';
+                        echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
+                        echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
+                        echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
+                        echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
+                        echo '</div>';
+                        echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
+                        echo '</div>';
+                    }else{
+                        echo '<div id="produktright" style="float: right; background-color: #e27d2f; width: 35%; height:auto; margin-right: 10%;">';
+                        echo '<img src="'.$entry['Bild'].'" alt="SmartHome Starterpaket" style="width:100%; height:auto;">';
+                        echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
+                        echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
+                        echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
+                        echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
+                        echo '</div>';
+                        echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
+                        echo '</div>';
+                    }
+                    $tmp++;
+ 			    }  
+		      ?>  
+ 		     </div>  
+<!--
             <div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">
                 <img src="data/images/produktbilder/starterpaket.jpg" alt="SmartHome Starterpaket" style="width:100%; height:auto;">
                 <div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">
@@ -180,9 +218,10 @@
                 </div>
                 <button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>
             </div>
+-->
             <br>
         </div>
-                
+       
         <div class="bottom">
             <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="data/images/icons/fuofacebook.png" alt="find us on facebook" 
                                                                                                   style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
