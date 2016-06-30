@@ -81,6 +81,17 @@ function dbDatenNeuRegistrierung(){
     $stadt = $_POST["stadtInput"]; 
     $telefon = $_POST["telNrInput"]; 
     $email = $_POST["emailInput"];
+    $pass = $_POST[""];
+    $passW = $_POST[""];
+    
+    /*
+    if($pasS != $passW){
+        //Fehlermeldung ausgeben
+        //! in die Ebene ?
+        echo "<p style='color: red>Passwort nicht identisch</p>";
+        
+    }
+    */
     
     //filtern nach HTML tags   
     $sicherArt = filter_var($art, FILTER_SANITIZE_STRING);
@@ -96,6 +107,7 @@ function dbDatenNeuRegistrierung(){
     $sicherBundesland = filter_var($bundesland, FILTER_SANITIZE_STRING);
     $sicherTelefon = filter_var($telefon, FILTER_SANITIZE_STRING);
     $sicherEmail = filter_var($email, FILTER_SANITIZE_STRING);
+    $sicherPass = filter_var($pass, FILTER_SANITIZE_STRING);
     
     //SQL
     $conn = dbVerbindungAufbauen();
