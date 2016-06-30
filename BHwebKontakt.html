@@ -1,11 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta name="keywords" content="brainhouse, smarthome, modern, technologisch">
         <meta name="description" content="smarthome Technologie">
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="BHweb.css">
+        <link rel="stylesheet" type="text/css" href="css/BHweb.css">
+        <script src="JS/jquery-3.0.0.min.js"></script>
+        <script> //Actionlistener
+            $(document).ready(function(){
+                //Kontaktformular
+                $("#kontaktbtn").click(function(){
+                    $("#kontaktDiv").toggle();   
+                });
+                $("#newsletterA").click(function(){
+                    $("#newsletterDiv").toggle();                        
+                });
+            });
+        </script>
         <title>brainhouse - ANSPRECHPARTNER</title>
     </head>
 
@@ -13,47 +25,71 @@
         <div class="top">
             <div id="logo">
                 <a class="normal" href="BHwebHome.html"><img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
-            </div>
-            <div id="menue">
-                <div class="dropdown">
+            </div>            
+            <div style="float: right;">
+                <div class="dropdown">  
                     <button class="dropbtn">Kontakt</button>
                     <div class="dropdown-content"> 
-                        <a class="normal" href="" hidden="">Standorte</a> 
-                        <a class="normal" href="BHwebKontakt.html" hidden="">Ansprechpartner</a> 
-                        <a class="normal" href="" hidden="">Fragen und Antworten</a> 
-                        <a class="normal" href="" hidden="">Informationen zum Vertrieb</a>  
-                        <a class="normal" href="BHwebPartner.html" hidden="">Unsere Partner</a>
-                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"" hidden="><img src="data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
-                        <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" hidden=""><img src="data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
+                        <a class="normal" href="BHwebKunden.html">Standorte</a> 
+                        <a class="normal" href="BHwebKontakt.html">Ansprechpartner</a> 
+                        <a class="normal" href="" style="color: darkgray;">Fragen und Antworten</a> 
+                        <a class="normal" href="" style="color: darkgray;">Informationen zum Vertrieb</a>  
+                        <a class="normal" href="BHwebPartner.html">Unsere Partner</a>
+                        <hr>
+                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
+                        <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts"><img src="data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
                     </div>           
                 </div> 
                 <div class="dropdown">  
-
                     <button class="dropbtn">Produkte</button>
-                    <div class="dropdown-content">
+                    <div class="dropdown-content">                         
                         <a class="normal" href="BHwebShop.html" hidden="">Shop</a>
                     </div>
-                </div>
-                 <div class="dropdown">
+                </div> 
+                 <div class="dropdown">  
                     <button class="dropbtn">News</button>
                     <div class="dropdown-content">
-                        <a class="normal" href="" hidden="BHwebSH.html">Was ist SmartHome</a>
-                        <a class="normal" href="" hidden="">Newsletter Abo</a>
-                        <a class="normal" href="" hidden="BHwebReferenzen.html">Kundenreferenzen</a>
-                    </div>
-                </div>
+                        <a class="normal" href="BHwebSH.html">Was ist SmartHome</a>
+                        <a class="normal" href="BHwebReferenzen.html">Kundenreferenzen</a>
+                        <a class="normal" href="" style="color: darkgray;">Presse</a>
+                        <a id="newsletterA" class="normal" href="#">Newsletter Abo</a> 
+                    </div>           
+                </div> 
                 <div class="dropdown">
                     <button class="dropbtn">Das Unternehmen</button>
-                    <div class="dropdown-content" >
-                        <a class="normal"href="BHwebLeitbild.html">Leitbild</a>
-                        <a class="normal"href="BHwebHistorie.html">Firmenhistorie</a>
-                        <a class="normal"href="BHwebVorstand.html">Unser Vorstand</a>
-                        <a class="normal"href="BHwebKunden.html"> Unsere Kunden</a>
+                    <div class="dropdown-content" >                        
+                        <a class="normal" href="" style="color: darkgray;">Unsere Lösungen</a>
+                        <a class="normal" href="BHwebLeitbild.html">Leitbild</a>
+                        <a class="normal" href="BHwebHistorie.html">Firmenhistorie</a>
+                        <a class="normal" href="BHwebVorstand.html">Unser Vorstand</a>
+                        <a class="normal" href="BHwebKunden.html"> Unsere Kunden</a>
                     </div>
-                </div>
+                </div>            
+            </div>
+        </div>        
+        <div id="newsletterDiv" class="anmeldung" style="display: none;">
+            <div style="margin-left: 20%; margin-right: 20%;">
+                <h1>Newletter Abonnement</h1>
+                <form action="datenverarbeitung.php" method="dbDatenNeuNewsletter()"> <!--Parameteruebergabe??-->
+                    <fieldset>
+                        <input type="radio" id="privat" value="Privatperson" name="kunde">
+                        <label for="privat">Privatperson</label>
+                        <input type="radio" id="unternehmen" value="Unternehmen" name="kunde">
+                        <label for="unternehmen">Unternehmen</label>
+                    </fieldset>
+                    <select name="geschlecht">
+                        <option>Frau</option>
+                        <option>Herr</option>
+                    </select>
+                    <input type="text" id="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
+                    <input type="text" id="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
+                    <br>
+                    <input type="email" id="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
+                    <br>
+                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                </form>
             </div>
         </div>
-
         <img src="data/images/neuronenSm.jpg" alt="brainhouse macht Ihr Zuhause intelligent" style="width:100%;height:auto;">
 
         <div class="middle">
@@ -61,7 +97,7 @@
             <br>
             <p class="centerOrange" style="font-size: 22px">
                 brainhouse SmartHome ist einfach zu bedienen und zu installieren.<br>
-                Sollten Sie dennoch Hilfe ben&Atilde;&para;tigen, rufen Sie unser Support-Team an, senden uns eine E-Mail oder kontaktieren Sie unseren Installationspartner.
+                Sollten Sie dennoch Hilfe benötigen, rufen Sie unser Support-Team an, senden uns eine E-Mail oder kontaktieren Sie unseren Installationspartner.
             </p>
             <br>
             <br>
@@ -76,7 +112,7 @@
                     (Mo bis Fr: 8 - 20 Uhr, Sa: 8 - 14 Uhr)
                 </p>
                 <br>
-                <button class="linkButton">KONTAKTFORMULAR</button>
+                <button id="kontaktbtn" class="subbtn">KONTAKTFORMULAR</button>
             </div>
             <div id="rightDiv">
                 <img src="data/images/icons/support3.PNG" alt="brainhouse support" style="width:47px; height:54px;">
@@ -88,7 +124,7 @@
                 </p>
                 <br>
                 <br>
-                <button class="linkButton">MEHR ERFAHREN</button>
+                <button class="subbtn">MEHR ERFAHREN</button>
             </div>
             <div id="middleDiv">
                 <img src="data/images/icons/support2.PNG" alt="brainhouse support" style="width:47px; height:54px;">
@@ -100,14 +136,38 @@
                     (Mo bis Fr: 8 - 20 Uhr)<br>
                     <small>(20 ct/Anruf aus dem dt. Festnetz, Mobilfunk max. 60ct pro Anruf)</small>
                 </p>
-                <button class="linkButton">TECHNIKFORMULAR</button>
+                <button class="subbtn">TECHNIKFORMULAR</button>
             </div>
 
 
             <div class="newsletter">
             </div>
         </div>
-
+        <div id="kontaktDiv" class="anmeldung" style="display: none;"> <!--style="display: none;"-->
+            <div style="margin-left: 20%; margin-right: 20%;">
+                <h1>Kontaktieren Sie uns</h1>
+                <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuNewsletter()-->
+                    <fieldset name="artInput">
+                        <input type="radio" id="privat" value="Privatperson">
+                        <label for="privat">Privatperson</label>
+                        <input type="radio" id="unternehmen" value="Unternehmen">
+                        <label for="unternehmen">Unternehmen</label>
+                    </fieldset>
+                    <select name="geschlechtInput">
+                        <option>Frau</option>
+                        <option>Herr</option>
+                    </select>
+                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
+                    <br>
+                    <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
+                    <br>
+                    <input type="text" name="nachrichtInput" placeholder="Ihre Nachricht" maxlength="250" class="inPut" style="width: 86%; height:100px;">
+                    <br>
+                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                </form>
+            </div>
+        </div>
         <div class="bottom">
             <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="data/images/icons/fuofacebook.png" alt="find us on facebook" style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
             <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="data/images/icons/fuotwitter.png" alt="follow us on twitter" style="width:auto; height:50px; margin-right: 20%; margin-bottom: 10px"></a>

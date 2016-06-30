@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: #000d1e; /*000d1e*/
+    background-color: #000d1e;
 }
 
 fieldset {
@@ -103,10 +103,6 @@ a.normal:hover, a.normal:active {
     margin-top: 2px;
     padding:  0px; */ 
     float: left;
-}
-
-#menue { 
-    float: right;
 }
 
 #rightDiv {
