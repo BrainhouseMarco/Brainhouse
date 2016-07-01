@@ -5,71 +5,107 @@
         <meta name="description" content="smarthome Technologie">
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="BHweb.css">
-        <title>brainhouse - Unsere Partner</title>
+        <link rel="stylesheet" type="text/css" href="css/BHweb.css">
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#newsletterA").click(function(){
+                    $("#newsletterDiv").toggle();                        
+                });
+            });
+        </script>
+        <title>brainhouse - PARTNER</title>
     </head>
 
     <body style=" background-color: ">
         <div class="top">
             <div id="logo">
                 <a class="normal" href="BHwebHome.html"><img src="data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
-            </div>
-            <div id="menue">
-                <div class="dropdown">
+            </div>            
+            <div style="float: right;">
+                <div class="dropdown">  
                     <button class="dropbtn">Kontakt</button>
-                    <div class="dropdown-content">
-                        <a class="normal" href="BHwebKontakt.html" hidden="">Ansprechpartner</a>
-                        <a class="normal" href="BHwebPartner.html" hidden="">Unsere Partner</a>
-                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de" hidden=""><img src="data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
-                        <a class="normal" href="https://www.facebook.com/FacebookDeutschland" hidden=""><img src="data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
-                    </div>
-                </div>
-                <div class="dropdown">
+                    <div class="dropdown-content"> 
+                        <a class="normal" href="BHwebKunden.html">Standorte</a> 
+                        <a class="normal" href="BHwebKontakt.html">Ansprechpartner</a> 
+                        <a class="normal" href="" style="color: darkgray;">Fragen und Antworten</a> 
+                        <a class="normal" href="" style="color: darkgray;">Informationen zum Vertrieb</a>  
+                        <a class="normal" href="BHwebPartner.html">Unsere Partner</a>
+                        <hr>
+                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
+                        <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts"><img src="data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
+                    </div>           
+                </div> 
+                <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
-                    <div class="dropdown-content">
-                        <a class="normal" href="BHwebShop.html" hidden="">Shop</a>
+                    <div class="dropdown-content">                         
+                        <a class="normal" href="BHwebShop.php" hidden="">Shop</a>
                     </div>
-                </div>
-                 <div class="dropdown">
+                </div> 
+                 <div class="dropdown">  
                     <button class="dropbtn">News</button>
                     <div class="dropdown-content">
-                        <a class="normal" href="" hidden="BHwebSH.html">Was ist SmartHome</a>
-                        <a class="normal" href="" hidden="">Newsletter Abo</a>
-                        <a class="normal" href="" hidden="BHwebReferenzen.html">Kundenreferenzen</a>
-                    </div>
-                </div>
+                        <a class="normal" href="BHwebSH.html">Was ist SmartHome</a>
+                        <a class="normal" href="BHwebReferenzen.html">Kundenreferenzen</a>
+                        <a class="normal" href="" style="color: darkgray;">Presse</a>
+                        <a id="newsletterA" class="normal" href="#">Newsletter Abo</a> 
+                    </div>           
+                </div> 
                 <div class="dropdown">
                     <button class="dropbtn">Das Unternehmen</button>
-                    <div class="dropdown-content" >
-                        <a class="normal"href="BHwebLeitbild.html">Leitbild</a>
-                        <a class="normal"href="BHwebHistorie.html">Firmenhistorie</a>
-                        <a class="normal"href="BHwebVorstand.html">Unser Vorstand</a>
-                        <a class="normal"href="BHwebKunden.html"> Unsere Kunden</a>
+                    <div class="dropdown-content" >                        
+                        <a class="normal" href="" style="color: darkgray;">Unsere Lösungen</a>
+                        <a class="normal" href="BHwebLeitbild.html">Leitbild</a>
+                        <a class="normal" href="BHwebHistorie.html">Firmenhistorie</a>
+                        <a class="normal" href="BHwebVorstand.html">Unser Vorstand</a>
+                        <a class="normal" href="BHwebKunden.html"> Unsere Kunden</a>
                     </div>
-                </div>
+                </div>            
             </div>
         </div>
-
-
+        
+        <div id="newsletterDiv" class="anmeldung" style="display: none;">
+            <div style="margin-left: 20%; margin-right: 20%;">
+                <h1>Newletter Abonnement</h1>
+                <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuNewsletter()-->
+                    <fieldset> <!--name der Radiobtn müssen gleich sein damit nur eins ausgewählt werden kann-->
+                        <input type="radio" id="private" name="art" value="Privatperson"> <!--name="artInput[0][privat]"-->
+                        <label for="privat">Privatperson</label>
+                        <input type="radio" id="unternehmen" name="art" value="Unternehmen"> <!--name="artInput[0][unternehmen]"-->
+                        <label for="unternehmen">Unternehmen</label>
+                    </fieldset>
+                    <select name="geschlechtInput">
+                        <option>Frau</option>
+                        <option>Herr</option>
+                    </select>
+                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;">
+                    <input type="text" name="unternehmensnameInput" placeholder="Firma" maxlength="60" class="inPut" style="width: 490px;">
+                    <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
+                    <br>
+                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                </form>
+            </div>
+        </div>
+        
         <img src="data/images/neuronenSm.jpg" alt="brainhouse macht Ihr Zuhause intelligent" style="width:100%;height:auto;">
-
         <div class="middle">
-        <h1>Unsere Partner im &Uuml;berblick</h1><br>
+        <h1>Unsere Partner im Überblick</h1><br>
         <img src="data/images/Partner/android.jpg" alt="android" style="width:200px;height:auto;">
-        Im Bereich Betriebssysteme f&uuml;r Mobile Ger&auml;te ist Android der Marktf&uuml;hrer. Er geh&ouml;rt zu dem Google Dachkonzert Alphabet AG.
-        Durch diese Zusammenarbeit sichern wir die Bedienung &uuml;ber diverse Smartphones.
+        Im Bereich Betriebssysteme für Mobile Geräte ist Android der Marktführer. Er gehört zu dem Google Dachkonzert Alphabet AG.
+        Durch diese Zusammenarbeit sichern wir die Bedienung über diverse Smartphones.
         <br><br>
         <img src="data/images/Partner/apple.jpg" alt="apple" style="width:200px;height:auto;">
-        Als Luxus Smartphone und Tablet Entwickler ist eine Partnerschaft mit der Apple AG nicht weg zu denken. Diverse Ger&auml;te die mit
-        dem gelieben Obst versehen sind werden bei uns selbstverst&auml;ndlich unterst&uuml;tzt.
+        Als Luxus Smartphone und Tablet Entwickler ist eine Partnerschaft mit der Apple AG nicht weg zu denken. Diverse Geräte die mit
+        dem gelieben Obst versehen sind werden bei uns selbstverständlich unterstützt.
         <br><br><br>
         <img src="data/images/Partner/microsoft.png" alt="microsoft" style="width:200px;height:auto;">
-        Als ein alter Hase in der Entwicklung von Betriebssystemen f&uuml;r mobile Ger&auml;te und auch f&uuml;r diverse Laptops und PCs ist eine
-        Verbindung mit unseren Ger&auml;ten durchaus m&ouml;glich. Die Webanwendungen werden speziell f&uuml;r die Microsoft AG angepasst.
+        Als ein alter Hase in der Entwicklung von Betriebssystemen für mobile Geräte und auch für diverse Laptops und PCs ist eine
+        Verbindung mit unseren Geräten durchaus möglich. Die Webanwendungen werden speziell für die Microsoft AG angepasst.
         <br><br>
         <img src="data/images/Partner/festo.png" alt="festo" style="width:200px;height:auto;">
-        Die Festo AG ist Marktf&uuml;hrer in Steuerungs und Vernetzungstechnik und gew&auml;hrt uns durch die Partnerschaft einblicke in das
-        Know How ihrer Ger&auml;te. Diese Technology wird direkt auf unsere Produkte &uuml;bertragen.
+        Die Festo AG ist Marktführer in Steuerungs und Vernetzungstechnik und gewährt uns durch die Partnerschaft einblicke in das
+        Know How ihrer Geräte. Diese Technology wird direkt auf unsere Produkte übertragen.
         </div>
 
         <div class="bottom">
