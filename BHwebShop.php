@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
@@ -44,6 +44,7 @@
         <title>brainhouse - SHOP</title>
     </head>
 
+
     <body >
         <div class="top">
             <div id="logo">
@@ -78,11 +79,13 @@
         <div id="logindiv" class="anmeldung" style="display: none;">
             <div id="login" style=" display: none; margin-left: 20%; margin-right: 20%;">
                 <form action="datenverarbeitung.php" method="post" id="login"> <!--dbDatenAbgleich()-->
+
                     <input type="text" name="emailInput" maxlength="30" placeholder="E-mail" class="inPut" style="width: 60%;">
                     <br>
                     <input type="password" name="passInput" maxlength="30" placeholder="Passwort" class="inPut" style="width: 60%;">
                     <br>
                     <button id="loginbtn" type="submit" class="subbtn" style="margin-left: 48%;">login</button>
+
                 </form>
                 <p style="font-size: 12px; color: white;">Noch nicht als Kunde registriert? <button id="registbtn" class="dropbtn" style="background-color: #e27d2f">hier registrieren</button></p>
             </div>
@@ -105,6 +108,7 @@
                     <br>
                     <input type="text" name="passInput" placeholder="Passwort" maxlength="30" class="inPut" style="width: 45%;">
                     <input type="text" name="passWInput" placeholder="Wiederholen Sie ihr Passwort" maxlength="30" class="inPut" style="margin-left: 1%; width: 45%;">
+
                     <br>
                     <br>
                     <input type="checkbox" name="agbInput" value="AGB zustimmen">
@@ -115,11 +119,13 @@
                     <br>
                     <br>
                     <button id="registbtn" type="submit" class="subbtn" value="abschicken" style="margin-left: 73%;">registrieren</button>
+
                 </form>
             </div>
         </div>
 
         <div class="middle" style="height:1250px">
+
             <div style="float: left;">                 
                 <div class="dropdown">  
                     <button class="dropbtn">Effizienzprodukte</button>          
@@ -196,6 +202,7 @@
               ?>   
  		 </div>  
         <br>
+
         </div>
        
         <div class="bottom">

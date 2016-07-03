@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
@@ -19,6 +19,7 @@
                     } else {
                         $("#login").toggle();
                     }
+
                 });
                 $("#registbtn").click(function(){
                     $("#login").toggle();
@@ -60,6 +61,7 @@
                 <div id="profilMenue" class="dropdown" style="display: none;">
                     <button class="dropbtn">Mein Profil</button>
                     <div class="dropdown-content">
+
                         <a class="normal" href="">Daten</a>
                         <a class="normal" href="">Bestellungen</a>
                         <a class="normal" href="">abmelden</a>
@@ -72,6 +74,7 @@
                     <button class="dropbtn">Home</button>
                     <div class="dropdown-content">
                         <a class="normal" href="BHwebHome.html">zur&Atilde;&frac14;ck zur Website</a>
+
                     </div>
                 </div>
             </div>
@@ -90,6 +93,7 @@
 
             <div id="regist" style="display: none; margin-left: 20%; margin-right: 20%;">
                 <h1>Registrierung</h1>
+
                 <form action="BHwebRegistrierung_speichern.php" method="post"> <!--Parameteruebergabe??-->
                     <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;">
                     <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
@@ -117,11 +121,13 @@
                     <br>
                     <br>
                     <button id="registbtn" type="submit" class="subbtn"value="abschicken">registrieren</button>
+
                 </form>
             </div>
         </div>
 
         <div class="middle" style="height:500px">
+
             <div style="float: left;">
                 <div class="dropdown">
                     <button class="dropbtn">Effizienzprodukte</button>
@@ -132,15 +138,18 @@
                 <div class="dropdown">
                     <button class="dropbtn">SmartHome</button>
                     <div class="dropdown-content">
+
                         <a class="normal" onclick="">Alle Produkte</a>
                         <hr>
                         <a class="normal" style="color: darkgray;">Energie</a>
                         <a class="normal" style="color: darkgray;">Komfort</a>
                         <a class="normal" style="color: darkgray">Sicherheit</a>
+
                         <a class="normal" style="color: darkgray">Komplettl&Atilde;&para;sungen</a>
                         <a class="normal" style="color: darkgray">Energie</a>
                         <hr>
                         <a class="normal" style="color: darkgray">Zubeh&Atilde;&para;r</a>
+
                         <a class="normal" style="color: darkgray">Apps</a>
                         <hr>
                         <a class="normal" style="color: darkgray">Dienstleistungen</a>
@@ -148,6 +157,7 @@
                         <a class="normal">Informationstermin buchen</a>
 
                     </div>
+
                 </div>
             </div>
             <br>
@@ -166,6 +176,7 @@
                                     die('keine Verbindung möglich: ' . mysqli_error());
                              }
                              foreach ($pdo->query('SELECT * FROM produkte;') as $entry){
+
                     if($tmp%2 == 1){
                         echo '<div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">';
                         echo '<img src="'.$entry['Bild'].'" alt="SmartHome Starterpaket" style="width:100%; height:auto;">';
@@ -191,6 +202,7 @@
                              }
                       ?>
                       </div>
+
 <!--
             <div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">
                 <img src="data/images/produktbilder/starterpaket.jpg" alt="SmartHome Starterpaket" style="width:100%; height:auto;">
@@ -216,10 +228,12 @@
 
         <div class="bottom">
             <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="data/images/icons/fuofacebook.png" alt="find us on facebook"
+
                                                                                                   style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
             <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="data/images/icons/fuotwitter.png" alt="follow us on twitter" style="width:auto; height:50px; margin-right: 20%; margin-bottom: 10px"></a>
             <p style="float: left">Copyright &Acirc;&copy; 2016 <a class="normal" href="BMNwebHome.html" style="">BMN</a></p>
             <p style="float: right"><a class="normal" href="BHwebImpressum.html" style="">Impressum</a></p>
         </div>
     </body>
+
 </html>
