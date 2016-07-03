@@ -39,7 +39,7 @@
                 <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
                     <div class="dropdown-content">                         
-                        <a class="normal" href="BHwebShop.html" hidden="">Shop</a>
+                        <a class="normal" href="BHwebShop.php" hidden="">Shop</a>
                     </div>
                 </div> 
                  <div class="dropdown">  
@@ -68,15 +68,15 @@
             <div style="margin-left: 20%; margin-right: 20%;">
                 <h1>Newletter Abonnement</h1>
                 <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuNewsletter()-->
-                    <fieldset name="artInput">
-                        <input type="radio" id="private" name="privatInput" value="Privatperson" name="kunde">
+                    <fieldset> <!--name der Radiobtn müssen gleich sein damit nur eins ausgewählt werden kann-->
+                        <input type="radio" id="private" name="art" value="Privatperson"> <!--name="artInput[0][privat]"-->
                         <label for="privat">Privatperson</label>
-                        <input type="radio" id="unternehmen" name="unternehmenInput" value="Unternehmen" name="kunde">
+                        <input type="radio" id="unternehmen" name="art" value="Unternehmen"> <!--name="artInput[0][unternehmen]"-->
                         <label for="unternehmen">Unternehmen</label>
                     </fieldset>
                     <select name="geschlechtInput">
-                        <option>Frau</option>
-                        <option>Herr</option>
+                        <option value="0">Frau</option>
+                        <option value="2">Herr</option>
                     </select>
                     <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
                     <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;">

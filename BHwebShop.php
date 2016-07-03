@@ -7,7 +7,7 @@
         <meta charset="UTF-8"> 
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
         <link rel="stylesheet" type="text/css" href="css/BHweb.css">
-        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="JS/jquery-3.0.0.min.js"></script>        
         <script src="php/datenverarbeitung.php"></script>
         <script> //Actionlistener
             $(document).ready(function(){
@@ -78,7 +78,7 @@
         </div>
         <div id="logindiv" class="anmeldung" style="display: none;">
             <div id="login" style=" display: none; margin-left: 20%; margin-right: 20%;">
-                <form action="dbDatenAbgleich()" method="post" id="login"> <!--dbDatenAbgleich()-->
+                <form action="datenverarbeitung.php" method="post" id="login"> <!--dbDatenAbgleich()-->
                     <input type="text" name="emailInput" maxlength="30" placeholder="E-mail" class="inPut">
                     <br>
                     <input type="password" name="passInput" maxlength="30" placeholder="Passwort" class="inPut">
@@ -90,7 +90,7 @@
             
             <div id="regist" style="display: none; margin-left: 20%; margin-right: 20%;">
                 <h1>Registrierung</h1>
-                <form action="dbDatenNeuRegistrierung()" method="dbDatenNeuRegistrierung()"> <!--Parameteruebergabe??-->
+                <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuRegistrierung()??-->
                     <fieldset name="artInput">
                         <input type="radio" id="privat" value="Privatperson" name="kunde">
                         <label for="privat">Privatperson</label>
@@ -111,15 +111,18 @@
                     <input type="text" name="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 445px;">
                     <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30px;">
                     <br>
-                    <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut">
-                    <input type="text" name="stadtInput" placeholder="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >
+                    <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" onchange=""> <!--onchange, btn o ähnliches zur Autovervollständigung-->
+                    <select name="stadtInput" onchange="" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >
+                        <option></option><!--dynamisch füllen, vgl Callback 30.06.2016 WE-->
+                    </select>
+                    <!--<input type="text" name="stadtInput" placeholder="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >-->
                     <br>
                     <input type="tel" name="telNrInput" placeholder="Telefon" maxlength="30" class="inPut">
                     <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;"> 
                     <br>
-                    <br>
-                    <input type="password" name="passInput" placeholder="Passwort" maxlength="30" class="inPut" style="width: 250px;">
-                    <input type="password" name="passWiederholungInput" placeholder="Wiederholen Sie ihr Passwort" maxlength="30" class="inPut" style="margin-left: 1%; width: 250px;">
+                    <br>                    
+                    <input type="pass" name="passInput" placeholder="Passwort" maxlength="30" class="inPut" style="width: 240px;">
+                    <input type="pass" name="passWInput" placeholder="Wiederholen Sie ihr Passwort" maxlength="30" class="inPut" style="margin-left: 1%; width: 240px;"> 
                     <br>
                     <br>
                     <input type="checkbox" name="agbInput" value="AGB zustimmen">
@@ -168,62 +171,42 @@
             <br>
             <div>  
 		      <?php  
-			     $pdo = new PDO('mysql:host=localhost;dbname=bh_db', 'root', '');
+			     $pdo = new PDO('mysql:host=localhost;dbname=brainhouse', 'root', '');
                  $tmp = 1;
 			     if ( $pdo )  
  			    {  
- 				   echo 'Verbindung erfolgreich: ';  
+ 			        foreach ($pdo->query('SELECT * FROM produkte;') as $entry){ 
+                        if($tmp%2 == 1){
+                            echo '<div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">';
+                            echo '<img src="'.$entry['Bild'].'" alt="SmartHome '.$entry['Name'].'" style="width:100%; height:auto;">';
+                            echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
+                            echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
+                            echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
+                            echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
+                            echo '</div>';
+                            echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
+                            echo '</div>';
+                        }else{
+                            echo '<div id="produktright" style="float: right; background-color: #e27d2f; width: 35%; height:auto; margin-right: 10%;">';
+                            echo '<img src="'.$entry['Bild'].'" alt="SmartHome '.$entry['Name'].'" style="width:100%; height:auto;">';
+                            echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
+                            echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
+                            echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
+                            echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
+                            echo '</div>';
+                            echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
+                            echo '</div>';
+                        }
+                        $tmp++;
+ 			        }      
  			    }  
 			    else  
  			    {  
  				   die('keine Verbindung möglich: ' . mysqli_error());  
- 			    }  
- 			    foreach ($pdo->query('SELECT * FROM produkte;') as $entry){ 
-                    if($tmp%2 == 1){
-                        echo '<div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">';
-                        echo '<img src="'.$entry['Bild'].'" alt="SmartHome Starterpaket" style="width:100%; height:auto;">';
-                        echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
-                        echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
-                        echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
-                        echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
-                        echo '</div>';
-                        echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
-                        echo '</div>';
-                    }else{
-                        echo '<div id="produktright" style="float: right; background-color: #e27d2f; width: 35%; height:auto; margin-right: 10%;">';
-                        echo '<img src="'.$entry['Bild'].'" alt="SmartHome Starterpaket" style="width:100%; height:auto;">';
-                        echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
-                        echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
-                        echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
-                        echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
-                        echo '</div>';
-                        echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
-                        echo '</div>';
-                    }
-                    $tmp++;
- 			    }  
+ 			    } 
 		      ?>  
  		     </div>  
-<!--
-            <div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">
-                <img src="data/images/produktbilder/starterpaket.jpg" alt="SmartHome Starterpaket" style="width:100%; height:auto;">
-                <div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">
-                    &#160;&#160;&#160;&#160;&#160;&#160;brainhouse SmartHome Starterpaket<br>
-                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;319,00€<br>
-                    &#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>
-                </div>
-                <button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>
-            </div>
-            <div id="produktright" style="float: right; background-color: #e27d2f; width: 35%; height:auto; margin-right: 10%;">
-                <img src="data/images/produktbilder/schutzengelpaket.jpg" alt="SmartHome Schutzengelpaket" style="width:100%; height:auto;">
-                <div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">
-                    &#160;&#160;&#160;&#160;&#160;&#160;brainhouse SmartHome Schutzengelpaket<br>
-                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;299,00€<br>
-                    &#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>
-                </div>
-                <button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>
-            </div>
--->
+
             <br>
         </div>
        
