@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 01. Jul 2016 um 18:16
+-- Erstellungszeit: 01. Jul 2016 um 21:26
 -- Server-Version: 10.1.13-MariaDB
 -- PHP-Version: 5.6.21
 
@@ -50,6 +50,13 @@ CREATE TABLE `kunde` (
   `Passwort` varchar(30) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Daten für Tabelle `kunde`
+--
+
+INSERT INTO `kunde` (`K_ID`, `Vorname`, `Nachname`, `Telefon`, `EMail`, `Strasse`, `HNR`, `O_ID`, `Passwort`) VALUES
+(1, 'Nadine', 'Niggemeier', '015005552666', 'nad97@aol.com', 'Muster', 11, 7, 'dadadada');
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +69,14 @@ CREATE TABLE `ort` (
   `PLZ` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Daten für Tabelle `ort`
+--
+
+INSERT INTO `ort` (`O_ID`, `Name`, `PLZ`) VALUES
+(6, 'Muster', 75330),
+(7, 'WWWWW', 73550);
+
 -- --------------------------------------------------------
 
 --
@@ -72,8 +87,20 @@ CREATE TABLE `produkt` (
   `P_ID` int(11) NOT NULL,
   `Name` varchar(50) COLLATE utf8_bin NOT NULL,
   `Preis` double NOT NULL,
-  `Beschreibung` varchar(50) COLLATE utf8_bin NOT NULL
+  `Beschreibung` varchar(150) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Daten für Tabelle `produkt`
+--
+
+INSERT INTO `produkt` (`P_ID`, `Name`, `Preis`, `Beschreibung`) VALUES
+(1, 'Starterpaket', 319.55, 'Das brainhouse SmartHome Starterpaket – der ideale Einstieg in die Welt der intelligenten Haussteuerung'),
+(2, 'Heizpaket', 231.55, 'brainhouse SmartHome Heizpaket – Ihr warmes Zuhause ganz nach Bedarf '),
+(3, 'Energiesparpaket', 430.55, 'Für ein energieeffizientes Zuhause: brainhouse SmartHome Energiesparpaket\r\n'),
+(4, 'Lichtpaket', 269.55, 'Smarte Beleuchtung in der Winterzeit: brainhouse SmartHome Lichtpaket'),
+(5, 'Kamerapaket', 438.55, 'Mehr Sicherheit für Haus und Wohnung: brainhouse SmartHome Kamerapaket\r\n'),
+(6, 'Solarpaket', 659.55, 'Das brainhouse SmartHome Solarpaket – die ideale Ergänzung zu Ihrer Photovoltaik-Anlage\r\n');
 
 -- --------------------------------------------------------
 
@@ -134,17 +161,17 @@ ALTER TABLE `bestellung`
 -- AUTO_INCREMENT für Tabelle `kunde`
 --
 ALTER TABLE `kunde`
-  MODIFY `K_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `K_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT für Tabelle `ort`
 --
 ALTER TABLE `ort`
-  MODIFY `O_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `O_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT für Tabelle `produkt`
 --
 ALTER TABLE `produkt`
-  MODIFY `P_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `P_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT für Tabelle `produktpos`
 --

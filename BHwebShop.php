@@ -43,7 +43,6 @@
         
         <title>brainhouse - SHOP</title>
     </head>
-    
 
     <body >
         <div class="top">
@@ -79,50 +78,33 @@
         <div id="logindiv" class="anmeldung" style="display: none;">
             <div id="login" style=" display: none; margin-left: 20%; margin-right: 20%;">
                 <form action="datenverarbeitung.php" method="post" id="login"> <!--dbDatenAbgleich()-->
-                    <input type="text" name="emailInput" maxlength="30" placeholder="E-mail" class="inPut">
+                    <input type="text" name="emailInput" maxlength="30" placeholder="E-mail" class="inPut" style="width: 60%;">
                     <br>
-                    <input type="password" name="passInput" maxlength="30" placeholder="Passwort" class="inPut">
+                    <input type="password" name="passInput" maxlength="30" placeholder="Passwort" class="inPut" style="width: 60%;">
                     <br>
-                    <button id="loginbtn" type="submit" class="subbtn">login</button>
+                    <button id="loginbtn" type="submit" class="subbtn" style="margin-left: 48%;">login</button>
                 </form>
                 <p style="font-size: 12px; color: white;">Noch nicht als Kunde registriert? <button id="registbtn" class="dropbtn" style="background-color: #e27d2f">hier registrieren</button></p>
             </div>
             
             <div id="regist" style="display: none; margin-left: 20%; margin-right: 20%;">
                 <h1>Registrierung</h1>
-                <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuRegistrierung()??-->
-                    <fieldset name="artInput">
-                        <input type="radio" id="privat" value="Privatperson" name="kunde">
-                        <label for="privat">Privatperson</label>
-                        <input type="radio" id="unternehmen" value="Unternehmen" name="kunde">
-                        <label for="unternehmen">Unternehmen</label>
-                    </fieldset>
-                    <select name="geschlechtInput">
-                        <option>Frau</option>
-                        <option>Herr</option>
-                    </select>
-                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%;"> 
-                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%;" >
+                <form action="BHwebRegistrierung_speichern.php" method="post"> <!--Parameteruebergabe??-->
+                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="width: 45%;">
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 45%;" >
                     <br>
-                    <input type="text" name="unternehmensnameInput" placeholder="Firma" maxlength="60" class="inPut" style="width: 490px;">
+                    <input type="text" name="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 60%;">
+                    <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30%;">
                     <br>
-                    <input type="date" name="gebTagInput" placeholder="Geburtsdatum, z.Bsp. 01.01.2016" maxlength="10" class="inPut" style="width: 490px;">
+                    <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" style="width: 30%;">
+                    <input type="text" name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 60%;" >
                     <br>
-                    <input type="text" name="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 445px;">
-                    <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30px;">
+                    <input type="text" name="telNrInput" placeholder="Telefon" maxlength="30" class="inPut" style="width: 45%;">
+                    <input type="text" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 45%;">
                     <br>
-                    <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" onchange=""> <!--onchange, btn o ähnliches zur Autovervollständigung-->
-                    <select name="stadtInput" onchange="" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >
-                        <option></option><!--dynamisch füllen, vgl Callback 30.06.2016 WE-->
-                    </select>
-                    <!--<input type="text" name="stadtInput" placeholder="Stadt" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;" >-->
                     <br>
-                    <input type="tel" name="telNrInput" placeholder="Telefon" maxlength="30" class="inPut">
-                    <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 275px;"> 
-                    <br>
-                    <br>                    
-                    <input type="pass" name="passInput" placeholder="Passwort" maxlength="30" class="inPut" style="width: 240px;">
-                    <input type="pass" name="passWInput" placeholder="Wiederholen Sie ihr Passwort" maxlength="30" class="inPut" style="margin-left: 1%; width: 240px;"> 
+                    <input type="text" name="passInput" placeholder="Passwort" maxlength="30" class="inPut" style="width: 45%;">
+                    <input type="text" name="passWInput" placeholder="Wiederholen Sie ihr Passwort" maxlength="30" class="inPut" style="margin-left: 1%; width: 45%;">
                     <br>
                     <br>
                     <input type="checkbox" name="agbInput" value="AGB zustimmen">
@@ -132,12 +114,12 @@
                     <label for="newsletter">Ich möchte den brainhouse E-mail Newsletter erhalten</label>
                     <br>
                     <br>
-                    <button id="registbtn" type="submit" class="subbtn">registrieren</button>
+                    <button id="registbtn" type="submit" class="subbtn" value="abschicken" style="margin-left: 73%;">registrieren</button>
                 </form>
             </div>
         </div>
 
-        <div class="middle" style="height:500px">
+        <div class="middle" style="height:1250px">
             <div style="float: left;">                 
                 <div class="dropdown">  
                     <button class="dropbtn">Effizienzprodukte</button>          
@@ -170,44 +152,50 @@
             <br>
             <br>
             <div>  
-		      <?php  
-			     $pdo = new PDO('mysql:host=localhost;dbname=brainhouse', 'root', '');
-                 $tmp = 1;
-			     if ( $pdo )  
- 			    {  
- 			        foreach ($pdo->query('SELECT * FROM produkte;') as $entry){ 
-                        if($tmp%2 == 1){
-                            echo '<div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">';
-                            echo '<img src="'.$entry['Bild'].'" alt="SmartHome '.$entry['Name'].'" style="width:100%; height:auto;">';
-                            echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
-                            echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
-                            echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
-                            echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
-                            echo '</div>';
-                            echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
-                            echo '</div>';
-                        }else{
-                            echo '<div id="produktright" style="float: right; background-color: #e27d2f; width: 35%; height:auto; margin-right: 10%;">';
-                            echo '<img src="'.$entry['Bild'].'" alt="SmartHome '.$entry['Name'].'" style="width:100%; height:auto;">';
-                            echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
-                            echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Name'].'<br>';
-                            echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$entry['Preis'].'<br>';
-                            echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
-                            echo '</div>';
-                            echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
-                            echo '</div>';
+                <?php 
+                    $server = "localhost";
+                    $user = "root";
+                    $pass = "";
+                    $dbname = "brainhouse";
+                
+                    $verbindung = new mysqli($server, $user, $pass, $dbname);
+                    if(!$verbindung){
+                        //Fehlermeldung
+                        die('keine Verbindung möglich: ' . mysqli_error());
+                    }else{
+                        $tmp = 1;
+                        $sql = "SELECT * FROM produkt";
+                        $erg = mysqli_query($verbindung, $sql);
+                        
+                        if(mysqli_num_rows($erg) > 0){
+                            while($zeile =  mysqli_fetch_assoc($erg)){
+                                if($tmp%2 == 1){
+                                    echo '<div id="produktleft" style="float: left; background-color: #e27d2f; width: 35%; height:auto; margin-left: 10%;">';
+                                    echo '<img src="data/images/produktbilder/'.$zeile['Name'].'.jpg" alt="SmartHome '.$zeile['Name'].'" style="width:100%; height:auto;">';
+                                    echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
+                                    echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$zeile['Name'].'<br>';
+                                    echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$zeile['Preis'].'<br>';
+                                    echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
+                                    echo '</div>';
+                                    echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';         echo '</div>';
+                                }else{
+                                    echo '<div id="produktright" style="float: right; background-color: #e27d2f; width: 35%; height:auto; margin-right: 10%;">';
+                                    echo '<img src="data/images/produktbilder/'.$zeile['Name'].'.jpg" alt="SmartHome '.$zeile['Name'].'" style="width:100%; height:auto;">';
+                                    echo '<div id="produktrightInfo" style="background-color: rgba(255, 255, 255, 0.28); width: 100%; height:auto;">';
+                                    echo '&#160;&#160;&#160;&#160;&#160;&#160;'.$zeile['Name'].'<br>';
+                                    echo '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'.$zeile['Preis'].'<br>';
+                                    echo '&#160;&#160;&#160;&#160;&#160;&#160;<small>Lieferbar innerhalb von 2-7 Werktagen</small>';
+                                    echo '</div>';
+                                    echo '<button style="float: center; background-color: #e27d2f; color: white; font-size: 16px; border: none; cursor: pointer;">In den Warenkorb</button>';
+                                    echo '</div>';  
+                                }
+                                $tmp++;
+                            }
                         }
-                        $tmp++;
- 			        }      
- 			    }  
-			    else  
- 			    {  
- 				   die('keine Verbindung möglich: ' . mysqli_error());  
- 			    } 
-		      ?>  
- 		     </div>  
-
-            <br>
+                    }
+              ?>   
+ 		 </div>  
+        <br>
         </div>
        
         <div class="bottom">
