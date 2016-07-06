@@ -5,7 +5,7 @@
 <title></title>
 </head>
 <body>
-<!--<h3>Danke für das Eröffnen eines Kontos.</h3>-->
+<h3>Danke für das Eröffnen eines Kontos.</h3>
 <?php
          $server         = "localhost";
          $user           = "root";
@@ -75,7 +75,7 @@
                          }
 
 
-                 //$id = mysqli_insert_id($verbindung);
+                 $id = mysqli_insert_id($verbindung);
                  $sql  = "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,O_ID,Passwort)";
                  $sql .= " VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$id','$passwort')";
                  $abfrage1 = mysqli_query($verbindung, $sql);
@@ -90,7 +90,7 @@
                  }
          if ($stv==1)
                  {
-                 //$id = mysqli_insert_id($verbindung);
+                 $id = mysqli_insert_id($verbindung);
                  $sql  = "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,O_ID,Passwort)";
                  $sql .= " VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$id','$passwort')";
                  $abfrage1 = mysqli_query($verbindung, $sql);
