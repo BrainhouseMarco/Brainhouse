@@ -147,17 +147,7 @@
         <div id="kontaktDiv" class="anmeldung" style="display: none;"> <!--style="display: none;"-->
             <div style="margin-left: 20%; margin-right: 20%;">
                 <h1>Kontaktieren Sie uns</h1>
-                <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuNewsletter()-->
-                    <fieldset name="artInput">
-                        <input type="radio" id="privat" value="Privatperson">
-                        <label for="privat">Privatperson</label>
-                        <input type="radio" id="unternehmen" value="Unternehmen">
-                        <label for="unternehmen">Unternehmen</label>
-                    </fieldset>
-                    <select name="geschlechtInput">
-                        <option>Frau</option>
-                        <option>Herr</option>
-                    </select>
+                <form action="php/kontaktmail.php" method="post">
                     <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
                     <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
                     <br>
@@ -165,7 +155,7 @@
                     <br>
                     <input type="text" name="nachrichtInput" placeholder="Ihre Nachricht" maxlength="250" class="inPut" style="width: 86%; height:100px;">
                     <br>
-                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                    <button id="kontaktbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
                 </form>
             </div>
         </div>
