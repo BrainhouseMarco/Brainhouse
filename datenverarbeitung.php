@@ -54,7 +54,7 @@
                  }
             }
 		if ($stv==0){
-				$eintragen = mysqli_query(&verbindung, "INSERT INTO kunde (Vorname, Nachname, Telefon, EMail, Strasse,HNR, O_ID, Passwort) VALUES ('$vorname', '$nachname', '','$email','','','','')");	 
+				$eintragen = mysqli_query(&verbindung, "INSERT INTO kunde (Vorname, Nachname, EMail) VALUES ('$vorname','$nachname','$email')");	 
 				 }
 			 
          if ($stv==1){
