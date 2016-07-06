@@ -14,12 +14,12 @@
             exit;
             }
 			
-	if (substr_count($vorname,"") != 1)
-            {echo "<p>Ist keine name</p>";
+	if (strlen($vorname)==0)
+            {echo "<p>Ist kein vorname</p>";
             exit;
             }
-	if (substr_count($vorname,"") != 1)
-            {echo "<p>Ist keine name</p>";
+	if (strlen($nachname)==0)
+            {echo "<p>Ist kein nachname</p>";
             exit;
             }
 	
