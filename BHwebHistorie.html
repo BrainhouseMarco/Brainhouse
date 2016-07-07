@@ -39,7 +39,7 @@
                 <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
                     <div class="dropdown-content">                         
-                        <a class="normal" href="BHwebShop.php" hidden="">Shop</a>
+                        <a class="normal" href="php/BHwebShop.php" hidden="">Shop</a>
                     </div>
                 </div> 
                  <div class="dropdown">  
@@ -62,17 +62,12 @@
                     </div>
                 </div>            
             </div>
-        </div>        
+        </div>   
+        
         <div id="newsletterDiv" class="anmeldung" style="display: none;">
             <div style="margin-left: 20%; margin-right: 20%;">
                 <h1>Newletter Abonnement</h1>
-                <form action="datenverarbeitung.php" method="dbDatenNeuNewsletter()"> <!--Parameteruebergabe??-->
-                    <fieldset>
-                        <input type="radio" id="privat" value="Privatperson" name="kunde">
-                        <label for="privat">Privatperson</label>
-                        <input type="radio" id="unternehmen" value="Unternehmen" name="kunde">
-                        <label for="unternehmen">Unternehmen</label>
-                    </fieldset>
+                <form action="datenverarbeitung.php" method="dbDatenNeuNewsletter()">
                     <select name="geschlecht">
                         <option>Frau</option>
                         <option>Herr</option>
@@ -82,10 +77,11 @@
                     <br>
                     <input type="email" id="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
                     <br>
-                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">abonnieren</button>
                 </form>
             </div>
         </div>
+        
         <img src="data/images/neuronenSm.jpg" alt="brainhouse macht Ihr Zuhause intelligent" style="width:100%;height:auto;">
 
         <div class="middle">

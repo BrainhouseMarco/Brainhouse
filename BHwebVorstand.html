@@ -39,7 +39,7 @@
                 <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
                     <div class="dropdown-content">                         
-                        <a class="normal" href="BHwebShop.html" hidden="">Shop</a>
+                        <a class="normal" href="php/BHwebShop.html" hidden="">Shop</a>
                     </div>
                 </div> 
                  <div class="dropdown">  
@@ -67,23 +67,13 @@
         <div id="newsletterDiv" class="anmeldung" style="display: none;">
             <div style="margin-left: 20%; margin-right: 20%;">
                 <h1>Newletter Abonnement</h1>
-                <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuNewsletter()-->
-                    <fieldset> <!--name der Radiobtn müssen gleich sein damit nur eins ausgewählt werden kann-->
-                        <input type="radio" id="private" name="art" value="Privatperson"> <!--name="artInput[0][privat]"-->
-                        <label for="privat">Privatperson</label>
-                        <input type="radio" id="unternehmen" name="art" value="Unternehmen"> <!--name="artInput[0][unternehmen]"-->
-                        <label for="unternehmen">Unternehmen</label>
-                    </fieldset>
-                    <select name="geschlechtInput">
-                        <option>Frau</option>
-                        <option>Herr</option>
-                    </select>
-                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
-                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;">
-                    <input type="text" name="unternehmensnameInput" placeholder="Firma" maxlength="60" class="inPut" style="width: 490px;">
+                <form action="php/BHweb_NewsletterAbo.php" method="post">
+                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="width: 35%;"> 
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
+                    <br>
                     <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
                     <br>
-                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">abonnieren</button>
                 </form>
             </div>
         </div>
