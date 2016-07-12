@@ -1,4 +1,4 @@
-<!DOCTYPE php>
+﻿<!DOCTYPE php>
 <html>
     <head>
         <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
@@ -25,7 +25,7 @@
     <body>
         <div class="top">
             <div id="logo">
-                 <img src="../data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;">
+                 <a class="normal" href="../BHwebHome.html"><img src="../data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
             </div>    
             <div style="float: right;">
                 <div class="dropdown">  
