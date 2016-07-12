@@ -177,8 +177,8 @@
                     <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30%;">
                     <br>
                     <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" style="width: 25%;">
-                    <input type="text" name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 40%;" >
-                    <button id="autoPLZbtn" type="submit" class="subbtn" value="PLZ vervollständigen" style="margin-left: 1%; width: 25%;">PLZ ermitteln</button>
+                    <input type="text" name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;" >
+                    <button id="autoPLZbtn" type="submit" class="subbtn" value="PLZ vervollständigen" style="margin-left: 1%; width: 25%; display: none;">PLZ ermitteln</button>
                     <br>
                     <input type="text" name="telNrInput" placeholder="Telefon" maxlength="30" class="inPut" style="width: 45%;">
                     <input type="text" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 50%;">
