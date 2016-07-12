@@ -44,7 +44,7 @@
                 <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
                     <div class="dropdown-content">                         
-                        <a class="normal" href="../BHwebShop.php" hidden="">Shop</a>
+                        <a class="normal" href="#" hidden="">Shop</a>
                     </div>
                 </div> 
                  <div class="dropdown">  
