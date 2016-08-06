@@ -9,11 +9,6 @@
 </head>
 <body>
 <?php
-        //Parameter
-         $server         = "localhost";
-         $user           = "root";
-         $pass           = "";
-         $dbname         = "brainhouse";
 
         //filtern nach HTML tags
          $vorname        = filter_var($_POST["vornameInput"], FILTER_SANITIZE_STRING);
@@ -57,11 +52,7 @@
 		{echo "<h1>Bitte AGBs bestätigen zum Fortfahren</h1>"}
 
         //DBVerbindung
-        $verbindung = new mysqli($server, $user, $pass, $dbname);
-        if (mysqli_connect_errno())
-         {
-          echo "Keine Verbindung zum DBServer:" . mysqli_connect_error();
-         }
+       require_once('DB_Verbindung.php');
 
         $ergebnis = mysqli_query($verbindung, "select * from kunde");
          $stv=0;
@@ -89,14 +80,16 @@
 
 							 
 				 if ($stv==1){
-						$eintragen = mysqli_query($verbindung, "UPDATE kunde SET Vorname='$vorname',Nachname='$nachname',Telefon='$tel',Email='$email', Strasse='$strasse',HNR='$hnr',Passwort='$passwort',Newsletter='1' WHERE EMail = '$email'");
-						echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert<br>Sie wurden zusätzlich noch zu unserem Newsletter angemeldet</h3>';
+						$time=time();
+						$code=md5($time);
+						$eintragen = mysqli_query($verbindung, "UPDATE kunde SET Vorname='$vorname',Nachname='$nachname',Telefon='$tel',Email='$email', Strasse='$strasse',HNR='$hnr',Passwort='$passwort',NewsCode='$code' WHERE EMail = '$email'");
+						echo "<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert<br>Um Ihre Anmeldung f&uuml;r unseren Newsletter abzuschlie&szlig;en, klicken sie bitte auf den folgenden Link: &nbsp <a href='BHweb_NewsletterAbo_success.php?code=".$code."'>link</a></h3>";
 						echo '<hr>';
 						echo '<br>';
 						echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a> </h3>";
 				 }
 			}else{
-
+				
 				if ($stv==0){
 							$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,Passwort) VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$passwort')");
 							echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert</h3>';
@@ -108,8 +101,10 @@
 
 							 
 				 if ($stv==1){
-						$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,Passwort,Newsletter) VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$passwort','1')");
-						echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert<br>Sie wurden zusätzlich noch zu unserem Newsletter angemeldet</h3>';
+						$time=time();
+						$code=md5($time);
+						$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,Passwort,NewsCode) VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$passwort','$code')");
+						echo "<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert<br>Um Ihre Anmeldung f&uuml;r unseren Newsletter abzuschlie&szlig;en, klicken sie bitte auf den folgenden Link: &nbsp <a href='BHweb_NewsletterAbo_success.php?code=".$code."'>link</a></h3>";
 						echo '<hr>';
 						echo '<br>';
 						echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a> </h3>";

@@ -27,17 +27,7 @@
 	
 	
 	
-	$server         = "localhost";
-    $user           = "root";
-    $pass           = "";
-    $dbname         = "brainhouse";
-	
-	
-	$verbindung = new mysqli($server, $user, $pass, $dbname);
-        if (mysqli_connect_errno())
-         {
-          echo "Keine Verbindung zum DBServer:" . mysqli_connect_error();
-         }
+	require_once('DB_Verbindung.php');
 		 
 		 $ergebnis = mysqli_query($verbindung, "select * from kunde");
          $stv=0;
@@ -55,23 +45,27 @@
                  }
             }
 		if ($stv==0){
-				$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname, Nachname, EMail, Newsletter) VALUES ('$vorname','$nachname','$email','1')");
+				$time=time();
+				$code=md5($time);
+				$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname, Nachname, EMail, NewsCode) VALUES ('$vorname','$nachname','$email','$code')");
 				echo "<h1>E-mail:</h1>";
 				echo "<h2>Empf&auml;nger:&nbsp" .$email. "</h2><br>";
 				echo "Sehr geehrte(r) Frau/Herr&nbsp;" .$vorname."&nbsp;". $nachname. ", <br>";
-				echo "um Ihre Anmeldung f&uuml;r unseren Newsletter abzuschlie&szlig;en, klicken sie bitte auf den folgenden Link: &nbsp <a href='../index.html'>link</a><br><br> Falls Sie Unseren Newsletter nicht abonniert haben sollten, ignorieren sie diese e-mail.<br>";
+				echo "um Ihre Anmeldung f&uuml;r unseren Newsletter abzuschlie&szlig;en, klicken sie bitte auf den folgenden Link: &nbsp <a href='BHweb_NewsletterAbo_success.php?code=".$code."'>link</a><br><br> Falls Sie Unseren Newsletter nicht abonniert haben sollten, ignorieren sie diese e-mail.<br>";
 				echo "<br>";
 				echo "Mit freundlichen Gr&uuml;&szlig;en<br>";
-				echo "Ihr Brainhouse Team";				
+				echo "Ihr Brainhouse Team";
 				 }
 			 
          if ($stv==1){
 			 if($stv2==1){
-				$update = mysqli_query($verbindung,"UPDATE kunde SET Newsletter='1' WHERE EMail = '$email'");
+				$time=time();
+				$code=md5($time);
+				$eintragen = mysqli_query($verbindung,"UPDATE kunde SET NewsCode='$code' WHERE EMail = '$email'");
 				echo "<h1>E-mail:</h1>";
 				echo "<h2>Empf&auml;nger:&nbsp" .$email. "</h2><br>";
 				echo "Sehr geehrte(r) Frau/Herr&nbsp;" .$vorname."&nbsp;". $nachname. ", <br>";
-				echo "um Ihre Anmeldung f&uuml;r unseren Newsletter abzuschlie&szlig;en, klicken sie bitte auf den folgenden Link: &nbsp <a href='../index.html'>link</a><br><br> Falls Sie Unseren Newsletter nicht abonniert haben sollten, ignorieren sie diese e-mail.<br>";
+				echo "um Ihre Anmeldung f&uuml;r unseren Newsletter abzuschlie&szlig;en, klicken sie bitte auf den folgenden Link: &nbsp <a href='BHweb_NewsletterAbo_success.php?code=".$code."'>link</a><br><br> Falls Sie Unseren Newsletter nicht abonniert haben sollten, ignorieren sie diese e-mail.<br>";
 				echo "<br>";
 				echo "Mit freundlichen Gr&uuml;&szlig;en<br>";
 				echo "Ihr Brainhouse Team";	
