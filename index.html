@@ -19,15 +19,11 @@
                     $("#kontaktDiv").toggle();   
                 });
                 */
-            });           
+            });   
+            
             function ajax(doc){
                 $.get(doc, function(data){$('#middle').html(data)})
-            };
-            /*
-            function ajaxPHP(){
-                document.getElementById('middle').innerHTML = <?php include("view.php"); ?>;
-            ;
-            */
+            };            
         </script>
         <title>brainhouse</title>
     </head>
@@ -54,7 +50,7 @@
                 <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
                     <div class="dropdown-content">                         
-                        <a class="normal" href="ajaxPHP('BHwebShop.php')">Shop</a>
+                        <a class="normal" href="php/BHwebShop.php"><img src="data/images/icons/warenkorb.png" alt="Shop" style="width:auto; height:30px;">&nbsp;&nbsp;Shop</a>
                     </div>
                 </div> 
                  <div class="dropdown">  
@@ -96,6 +92,22 @@
         <img src="data/images/neuronenSm.jpg" alt="brainhouse macht Ihr Zuhause intelligent" style="width:100%;height:auto;">
         
         <div class="middle" id="middle"></div>
+        
+        <div id="kontaktDiv" class="anmeldung" style="display: none;">
+            <div style="margin-left: 20%; margin-right: 20%;">
+                <h1>Kontaktieren Sie uns</h1>
+                <form action="php/BHweb_Kontaktmail.php" method="post">
+                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
+                    <br>
+                    <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
+                    <br>
+                    <input type="text" name="nachrichtInput" placeholder="Ihre Nachricht" maxlength="250" class="inPut" style="width: 86%; height:100px;">
+                    <br>
+                    <button id="kontaktbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
+                </form>
+            </div>
+        </div>
         
         <script>
             ajax('BHwebHome.html')

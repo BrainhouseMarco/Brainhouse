@@ -1,5 +1,33 @@
 <!DOCTYPE php>
 <html>
+    <head>
+        <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
+        <meta name="description" content="smarthome Technologie">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8"> 
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="data/images/logo/KundenLogo_1.ico">
+        <link rel="stylesheet" type="text/css" href="../css/BHweb.css">
+        <script src="../js/jquery-3.0.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#bestellformularbtn").click(function(){
+                    $("#bestelldiv").toggle();                        
+                });
+            });
+        </script
+        <title>brainhouse - SHOP</title>
+    </head>
+
+    <body>
+        <div class="top">
+            <div id="logo">
+                 <a class="normal" href="../index.html"><img src="../data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
+            </div>    
+            <div style="float: right;">
+                <button class="dropbtn" onclick="location.href='../index.html'"><img src="../data/images/icons/Home.png" alt="Home" style="width:auto; height:20px;">&nbsp;&nbsp;Home</button>           
+            </div>
+        </div>        
+        <div class="middle" style="height:1250px">
             <div style="float: left;">                 
                 <div class="dropdown">  
                     <button class="dropbtn">Effizienzprodukte</button>          
@@ -80,4 +108,47 @@
         <br>
         <br>
         <button id="bestellformularbtn" type="button" class="subbtn" value="Formular zeigen" style="float: right;">Informationen ordern</button>
+        </div>
+        
+        <div id="bestelldiv" class="anmeldung" style="display: none;">            
+            <div id="bestellfml" style="margin-left: 20%; margin-right: 20%;">
+                <h1>Bestellvorgang</h1>
+                <!--/*<form action="BHwebRegistrierung_speichern.php" method="post">*/-->
+                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="width: 45%;">
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 50%;" >                       
+                    <br>
+                    <input type="text" name="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 65%;">
+                    <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30%;">
+                    <br>
+                    <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" style="width: 25%;">
+                    <input type="text" name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;" >
+                    <button id="autoPLZbtn" type="submit" class="subbtn" value="PLZ vervollständigen" style="margin-left: 1%; width: 25%; display: none;">PLZ ermitteln</button>
+                    <br>
+                    <input type="text" name="telNrInput" placeholder="Telefon" maxlength="30" class="inPut" style="width: 45%;">
+                    <input type="text" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="margin-left: 1%; width: 50%;">
+                    <br>
+                    <br>
+                    <input type="text" name="passInput" placeholder="Passwort" maxlength="30" class="inPut" style="width: 45%;">
+                    <input type="text" name="passWInput" placeholder="Wiederholen Sie ihr Passwort" maxlength="30" class="inPut" style="margin-left: 1%; width: 45%;">
+                    <br>
+                    <br>
+                    <input type="checkbox" name="agbInput" value="AGB zustimmen">
+                    <label for="agbInput">Ich bestätige hier mit die brainhouse <a class="normal" href="">AGB</a></label>
+                    <br>
+                    <input type="checkbox" name="newsletterInput" value="Newsletter bestellen">
+                    <label for="newsletterInput">Ich möchte den brainhouse E-mail Newsletter erhalten</label>
+                    <br>
+                    <br>
+                    <button id="bestellbtn" type="submit" class="subbtn" value="abschicken" style="margin-left: 73%;">bestellen</button>
+                </form>
+            </div>
+        </div>
+       
+        <div class="bottom">
+            <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="../data/images/icons/fuofacebook.png" alt="find us on facebook" style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
+            <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="../data/images/icons/fuotwitter.png" alt="follow us on twitter" style="width:auto; height:50px; margin-right: 20%; margin-bottom: 10px"></a>
+            <p style="float: left">Copyright © 2016 <a class="normal" href="../BMNwebHome.html" style="">BMN</a></p>
+            <p style="float: right"><a class="normal" href="../BHwebImpressum.html" style="">Impressum</a></p>   
+        </div>
+    </body>    
 </html>

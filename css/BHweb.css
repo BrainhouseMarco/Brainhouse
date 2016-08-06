@@ -189,7 +189,7 @@ a.gray:link, a.gray:visited, a.gray:hover, a.gray:active, a.gray:visited, a.gray
     display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown:hover ,.dropbtn:hover {
     background-color: #e27d2f;
 }
 
