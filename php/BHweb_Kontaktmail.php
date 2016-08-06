@@ -33,7 +33,7 @@
         echo "Nachricht: " .$nachricht. "<br>";
 
 
-        echo '<h2>nachricht an Brainhouse</h2>';
+        echo '<h2>Nachricht an Brainhouse</h2>';
         echo 'Von '.$nachname.' '.$vorname.' ('.$email.') <br> an info@brainhouse.de';
         echo '<br><hr>';
         echo '<br>';
