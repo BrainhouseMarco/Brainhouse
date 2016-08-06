@@ -26,7 +26,7 @@
             exit;
             }
 
-        echo "<h2>Nachricht an Kunde</h2>"
+        echo "<h2>Nachricht an Kunde</h2>";
         echo "Sehr geehrter Kunde hier die Nachricht die sie an uns gesendet haben <br>";
         echo "<h2>Absendermail: " .$email. "</h2><br>";
         echo "Absendername: " .$vorname."&nbsp;". $nachname. ", <br>";
