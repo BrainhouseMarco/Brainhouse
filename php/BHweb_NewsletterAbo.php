@@ -1,8 +1,5 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/BHweb.css">
 <title>Email Versendet</title>
 </head>
 <body>
