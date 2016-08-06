@@ -30,22 +30,31 @@
         
          //kontrolle auf  @
          if (substr_count($email,"@") != 1)
-            {echo "<p>Ist keine Emailadresse</p>";
+            {echo "<h1>Bitte gültige E-mail adresse eintragen</h1>";
             exit;
             }
 
          //Passwort=Passwortw
          If ($passwort!=$passwortw){
-            echo "<p>Passworteingabe wiederholen</p>";
+            echo "<h1>Passwörter stimmen nicht überein</h1>";
             exit;
            }
 
          //Passwortlänge
          If (strlen($passwort)<6){
-            echo "<p>Passwort ist zu kurz</p>";
+            echo "<h1>Bitte längeres Passwort eigneben</h1>";
             exit;
            }
-
+		if (strlen($vorname)==0)
+            {echo "<h1>Bitte Vorname eintragen</h1>";
+            exit;
+            }
+		if (strlen($nachname)==0)
+            {echo "<h1>Bitte Nachname eintragen</h1>";
+            exit;
+            }
+		if (!isset($_POST["agbInput"]))
+		{echo "<h1>Bitte AGBs bestätigen zum Fortfahren</h1>"}
 
         //DBVerbindung
         $verbindung = new mysqli($server, $user, $pass, $dbname);
@@ -54,42 +63,59 @@
           echo "Keine Verbindung zum DBServer:" . mysqli_connect_error();
          }
 
-        //Verarbeitung der Ortsdaten
-         $ergebnis = mysqli_query($verbindung, "select * from ort");
+        $ergebnis = mysqli_query($verbindung, "select * from kunde");
          $stv=0;
-         while ($dsatz = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC))
-           {
-             if  ($plz==$dsatz["PLZ"]){
-                 $id=$dsatz["O_ID"];
-                 $stv=1;
-                }
-            }
-         if ($stv==0) //Postleitzahl ist nicht vorhanden
-            {
-                $sql = "INSERT INTO ort (PLZ,Name)";
-                $sql .= " VALUES ('$plz','$ort')";
-                $abfrage0 = mysqli_query($verbindung, $sql);
-                if($abfrage0)
+		 If  (isset($_POST["newsletterInput"]))
                  {
-                    //echo "<p>Ihre Ortsdaten wurden gespeichert</p>";
-                 }else{
-                    echo "<p>Die SQL-Anweisung (Ortsdaten)ist fehlgeschlagen</p>";
+                 $stv=1;
                  }
+		 $stv2=0;
+         while ($dsatz = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC))
+           {If  ($email==$dsatz["EMail"])
+                 {
+                 $stv2=1;
+                 }
+			
+            }
+			if($stv2==1){
+				if ($stv==0){
+							$eintragen = mysqli_query($verbindung, "UPDATE kunde SET Vorname='$vorname',Nachname='$nachname',Telefon='$tel',Email='$email', Strasse='$strasse',HNR='$hnr',Passwort='$passwort' WHERE EMail = '$email'");
+							echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert</h3>';
+							echo '<hr>';
+							echo '<br>';
+							echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a> </h3>";
+							}
+								
 
-            }else if ($stv==1)   //Postleitzahl ist schon vorhanden
-            {}
+							 
+				 if ($stv==1){
+						$eintragen = mysqli_query($verbindung, "UPDATE kunde SET Vorname='$vorname',Nachname='$nachname',Telefon='$tel',Email='$email', Strasse='$strasse',HNR='$hnr',Passwort='$passwort',Newsletter='1' WHERE EMail = '$email'");
+						echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert<br>Sie wurden zusätzlich noch zu unserem Newsletter angemeldet</h3>';
+						echo '<hr>';
+						echo '<br>';
+						echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a> </h3>";
+				 }
+			}else{
 
-            //Verarbeitung der Personendaten
-            $id = mysqli_insert_id($verbindung);
-            $sql = "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,O_ID,Passwort)";
-            $sql .= " VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$id','$passwort')";
-            $abfrage1 = mysqli_query($verbindung, $sql);
-            if($abfrage1)
-             {
-                 //echo "<p>Ihre Kundendaten wurden gespeichert</p>";
-             }else{
-                   echo "<p>Die SQL-Anweisung (Kundendaten)ist fehlgeschlagen</p>";
-             }
+				if ($stv==0){
+							$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,Passwort) VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$passwort')");
+							echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert</h3>';
+							echo '<hr>';
+							echo '<br>';
+							echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a> </h3>";
+							}
+								
+
+							 
+				 if ($stv==1){
+						$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname,Nachname,Telefon,Email, Strasse,HNR,Passwort,Newsletter) VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$passwort','1')");
+						echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert<br>Sie wurden zusätzlich noch zu unserem Newsletter angemeldet</h3>';
+						echo '<hr>';
+						echo '<br>';
+						echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a> </h3>";
+				 }
+			}
+
 /*
             //Verarbeitung der Bestelldaten
             $ergebnis = mysqli_query($verbindung, "select * from produkt");
@@ -102,96 +128,10 @@
 */
         mysqli_close($verbindung);
 
-/*
-        echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert</h3>';
-        echo '<hr>';
-        echo '<br>';
-        echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a> </h3>";
-*/
+
+        
+
     ?>
     
-    <div class="top">
-            <div id="logo">
-                <a class="normal" href="../BHwebHome.html"><img src="../data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
-            </div>            
-            <div style="float: right;">
-                <div class="dropdown">  
-                    <button class="dropbtn">Kontakt</button>
-                    <div class="dropdown-content"> 
-                        <a class="normal" href="../BHwebKunden.html">Standorte</a> 
-                        <a class="normal" href="../BHwebKontakt.html">Ansprechpartner</a> 
-                        <a class="normal" href="" style="color: darkgray;">Fragen und Antworten</a> 
-                        <a class="normal" href="" style="color: darkgray;">Informationen zum Vertrieb</a>  
-                        <a class="normal" href="../BHwebPartner.html">Unsere Partner</a>
-                        <hr>
-                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="../data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
-                        <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts"><img src="../data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
-                    </div>           
-                </div> 
-                <div class="dropdown">  
-                    <button class="dropbtn">Produkte</button>
-                    <div class="dropdown-content">                         
-                        <a class="normal" href="../BHwebShop.php" hidden="">Shop</a>
-                    </div>
-                </div> 
-                 <div class="dropdown">  
-                    <button class="dropbtn">News</button>
-                    <div class="dropdown-content">
-                        <a class="normal" href="../BHwebSH.html">Was ist SmartHome</a>
-                        <a class="normal" href="../BHwebReferenzen.html">Kundenreferenzen</a>
-                        <a class="normal" href="" style="color: darkgray;">Presse</a>
-                        <a id="newsletterA" class="normal" href="#">Newsletter Abo</a> 
-                    </div>           
-                </div> 
-                <div class="dropdown">
-                    <button class="dropbtn">Das Unternehmen</button>
-                    <div class="dropdown-content" >                        
-                        <a class="normal" href="" style="color: darkgray;">Unsere Lösungen</a>
-                        <a class="normal" href="../BHwebLeitbild.html">Leitbild</a>
-                        <a class="normal" href="../BHwebHistorie.html">Firmenhistorie</a>
-                        <a class="normal" href="../BHwebVorstand.html">Unser Vorstand</a>
-                        <a class="normal" href="../BHwebKunden.html"> Unsere Kunden</a>
-                    </div>
-                </div>            
-            </div>
-        </div>
-       
-        <div id="newsletterDiv" class="anmeldung" style="display: none;">
-            <div style="margin-left: 20%; margin-right: 20%;">
-                <h1>Newletter Abonnement</h1>
-                <form action="datenverarbeitung.php" method="post"> <!--dbDatenNeuNewsletter()-->
-                    <fieldset> <!--name der Radiobtn müssen gleich sein damit nur eins ausgewählt werden kann-->
-                        <input type="radio" id="private" name="art" value="Privatperson"> <!--name="artInput[0][privat]"-->
-                        <label for="privat">Privatperson</label>
-                        <input type="radio" id="unternehmen" name="art" value="Unternehmen"> <!--name="artInput[0][unternehmen]"-->
-                        <label for="unternehmen">Unternehmen</label>
-                    </fieldset>
-                    <select name="geschlechtInput">
-                        <option value="0">Frau</option>
-                        <option value="2">Herr</option>
-                    </select>
-                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
-                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;">
-                    <input type="text" name="unternehmensnameInput" placeholder="Firma" maxlength="60" class="inPut" style="width: 490px;">
-                    <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
-                    <br>
-                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">bestellen</button>
-                </form>
-            </div>
-        </div>
-        
-        <img src="../data/images/neuronenSm.jpg" alt="brainhouse macht Ihr Zuhause intelligent" style="width:100%;height:auto;">
-        
-        <div class="middle">
-            <h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert</h3>
-        </div>
-                
-        <div class="bottom">
-            <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="../data/images/icons/fuofacebook.png" alt="find us on facebook" style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
-            <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="../data/images/icons/fuotwitter.png" alt="follow us on twitter" style="width:auto; height:50px; margin-right: 20%; margin-bottom: 10px"></a>
-            <p style="float: left">Copyright © 2016 <a class="normal" href="../BMNwebHome.html" style="">BMN</a></p>
-            <p style="float: right"><a class="normal" href="../BHwebImpressum.html" style="">Impressum</a></p>   
-        </div>
-
 </body>
 </html>
