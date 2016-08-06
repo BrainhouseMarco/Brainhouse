@@ -3,22 +3,29 @@
         <h1 class="centerOrange" style="font-size: 30px">Wir sind da, um Ihnen zu helfen.</h1>
         <br>
         <p class="centerOrange" style="font-size: 22px">
-        brainhouse SmartHome ist einfach zu bedienen und zu installieren.<br>
-        Sollten Sie dennoch Hilfe benötigen, rufen Sie unser Support-Team an, senden uns eine E-Mail oder kontaktieren Sie unseren Installationspartner.
+            brainhouse SmartHome ist einfach zu bedienen und zu installieren.<br>
+            Sollten Sie dennoch Hilfe benötigen, rufen Sie unser Support-Team an, senden uns eine E-Mail oder kontaktieren Sie unseren Installationspartner.
         </p>
         <br>
         <br>
+    
+        <script>
+            function kontaktFormular(){
+                 $("#kontaktDiv").toggle(); 
+            }
+        </script>
+    
         <div id="leftDiv">
             <img src="data/images/icons/support1.PNG" alt="brainhouse support" style="width:47px; height:54px;">
             <h2 style="text-align: left; color: #ffffff">KOSTENLOSE<br> INFO-HOTLINE</h2>
             <br>
             <p style="text-align: left; color: #ffffff"><b>T 0800-1234010</b><br>
-            Unser Support-Team beantwortet<br>
-            allgemeine Fragen rund um RWE SmartHome.<br>
-            (Mo bis Fr: 8 - 20 Uhr, Sa: 8 - 14 Uhr)
+                Unser Support-Team beantwortet<br>
+                allgemeine Fragen rund um RWE SmartHome.<br>
+                (Mo bis Fr: 8 - 20 Uhr, Sa: 8 - 14 Uhr)
             </p>
             <br>
-            <button id="kontaktbtn" class="subbtn">KONTAKTFORMULAR</button>
+            <button class="subbtn" onclick="kontaktFormular()">KONTAKTFORMULAR</button>
         </div>
         <div id="rightDiv">
             <img src="data/images/icons/support3.PNG" alt="brainhouse support" style="width:47px; height:54px;">

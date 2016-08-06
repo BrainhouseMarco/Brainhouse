@@ -1,4 +1,4 @@
-﻿<!DOCTYPE php>
+<!DOCTYPE php>
 <html>
     <head>
         <meta name="keywords" content="brainhouse, smarthome, modern, shop, technologisch">
@@ -13,10 +13,6 @@
                 $("#bestellformularbtn").click(function(){
                     $("#bestelldiv").toggle();                        
                 });
-                
-                $("#newsletterA").click(function(){
-                    $("#newsletterDiv").toggle();                        
-                });
             });
         </script
         <title>brainhouse - SHOP</title>
@@ -25,64 +21,12 @@
     <body>
         <div class="top">
             <div id="logo">
-                 <a class="normal" href="../BHwebHome.html"><img src="../data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
+                 <a class="normal" href="../index.html"><img src="../data/images/logo/webLogo.PNG" alt="brainhouse Logo" style="width:auto; height:100%;"></a>
             </div>    
             <div style="float: right;">
-                <div class="dropdown">  
-                    <button class="dropbtn">Kontakt</button>
-                    <div class="dropdown-content"> 
-                        <a class="normal" href="../BHwebKunden.html">Standorte</a> 
-                        <a class="normal" href="../BHwebKontakt.html">Ansprechpartner</a> 
-                        <a class="normal" href="" style="color: darkgray;">Fragen und Antworten</a> 
-                        <a class="normal" href="" style="color: darkgray;">Informationen zum Vertrieb</a>  
-                        <a class="normal" href="../BHwebPartner.html">Unsere Partner</a>
-                        <hr>
-                        <a class="normal" href="https://twitter.com/RWEsmarthome?lang=de"><img src="../data/images/icons/twitter.png" alt="Twitter Link" style="width:auto; height:30px;"></a>
-                        <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts"><img src="../data/images/icons/facebook.png" alt="Facebook Link" style="width:auto; height:30px;"></a>
-                    </div>           
-                </div> 
-                <div class="dropdown">  
-                    <button class="dropbtn">Produkte</button>
-                    <div class="dropdown-content">                         
-                        <a class="normal" href="#" hidden="">Shop</a>
-                    </div>
-                </div> 
-                 <div class="dropdown">  
-                    <button class="dropbtn">News</button>
-                    <div class="dropdown-content">
-                        <a class="normal" href="../BHwebSH.html">Was ist SmartHome</a>
-                        <a class="normal" href="../BHwebReferenzen.html">Kundenreferenzen</a>
-                        <a class="normal" href="" style="color: darkgray;">Presse</a>
-                        <a id="newsletterA" class="normal" href="#">Newsletter Abo</a> 
-                    </div>           
-                </div> 
-                <div class="dropdown">
-                    <button class="dropbtn">Das Unternehmen</button>
-                    <div class="dropdown-content" >                        
-                        <a class="normal" href="" style="color: darkgray;">Unsere Lösungen</a>
-                        <a class="normal" href="../BHwebLeitbild.html">Leitbild</a>
-                        <a class="normal" href="../BHwebHistorie.html">Firmenhistorie</a>
-                        <a class="normal" href="../BHwebVorstand.html">Unser Vorstand</a>
-                        <a class="normal" href="../BHwebKunden.html"> Unsere Kunden</a>
-                    </div>
-                </div>            
+                <button class="dropbtn" onclick="location.href='../index.html'"><img src="../data/images/icons/Home.png" alt="Home" style="width:auto; height:20px;">&nbsp;&nbsp;Home</button>           
             </div>
-        </div>
-                        
-        <div id="newsletterDiv" class="anmeldung" style="display: none;">
-            <div style="margin-left: 20%; margin-right: 20%;">
-                <h1>Newletter Abonnement</h1>
-                <form action="BHweb_NewsletterAbo.php" method="post">
-                    <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="width: 35%;"> 
-                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
-                    <br>
-                    <input type="email" name="emailInput" placeholder="E-mail" maxlength="30" class="inPut" style="width: 86%;">
-                    <br>
-                    <button id="registbtn" type="submit" class="subbtn" style="margin-left: 70%;">abonnieren</button>
-                </form>
-            </div>
-        </div>
-        
+        </div>        
         <div class="middle" style="height:1250px">
             <div style="float: left;">                 
                 <div class="dropdown">  

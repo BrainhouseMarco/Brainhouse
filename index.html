@@ -13,15 +13,17 @@
                 $("#newsletterA").click(function(){
                     $("#newsletterDiv").toggle();                        
                 });
+                /*
                 //Kontaktformular
                 $("#kontaktbtn").click(function(){
                     $("#kontaktDiv").toggle();   
                 });
-            });
+                */
+            });   
             
             function ajax(doc){
                 $.get(doc, function(data){$('#middle').html(data)})
-            }
+            };            
         </script>
         <title>brainhouse</title>
     </head>
@@ -35,7 +37,7 @@
                 <div class="dropdown">  
                     <button class="dropbtn">Kontakt</button>
                     <div class="dropdown-content"> 
-                        <a class="normal" onclick="ajax('BHwebKunden.html')">Standorte</a> 
+                        <a class="normal" onclick="ajax('BHwebKontakt.html')">Standorte</a> 
                         <a class="normal" onclick="ajax('BHwebKontakt.html')">Ansprechpartner</a> 
                         <a class="gray" onclick="">Fragen und Antworten</a> 
                         <a class="gray" onclick="">Informationen zum Vertrieb</a>  
@@ -48,7 +50,7 @@
                 <div class="dropdown">  
                     <button class="dropbtn">Produkte</button>
                     <div class="dropdown-content">                         
-                        <a class="normal" href="php/BHwebShop.php">Shop</a>
+                        <a class="normal" href="php/BHwebShop.php"><img src="data/images/icons/warenkorb.png" alt="Shop" style="width:auto; height:30px;">&nbsp;&nbsp;Shop</a>
                     </div>
                 </div> 
                  <div class="dropdown">  
@@ -89,16 +91,12 @@
               
         <img src="data/images/neuronenSm.jpg" alt="brainhouse macht Ihr Zuhause intelligent" style="width:100%;height:auto;">
         
-        <script>
-                ajax('BHwebHome.html')
-        </script>
-        
         <div class="middle" id="middle"></div>
         
         <div id="kontaktDiv" class="anmeldung" style="display: none;">
             <div style="margin-left: 20%; margin-right: 20%;">
                 <h1>Kontaktieren Sie uns</h1>
-                <form action="php/kontaktmail.php" method="post">
+                <form action="php/BHweb_Kontaktmail.php" method="post">
                     <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;"> 
                     <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 35%;" >
                     <br>
@@ -110,6 +108,10 @@
                 </form>
             </div>
         </div>
+        
+        <script>
+            ajax('BHwebHome.html')
+        </script>
         
         <div class="bottom">
             <a class="normal" href="https://www.facebook.com/RWESmartHome/?fref=ts" style=""><img src="data/images/icons/fuofacebook.png" alt="find us on facebook" style="width:auto; height:50px; margin-left: 25%; margin-bottom: 10px"></a>
