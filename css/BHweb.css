@@ -27,7 +27,7 @@ a.menue:hover   {
     color:#e27d2f;
 }
 
-a.normal:link, a.normal:visited, a.normal:hover, a.normal:active {
+a.normal:link, a.normal:visited, a.normal:hover, a.normal:active{
     color:black; 
     background-color:transparent; 
     text-decoration:none;
@@ -37,6 +37,10 @@ a.normal:visited {
 }
 a.normal:hover, a.normal:active {
     color:#013d79;
+}
+a.gray:link, a.gray:visited, a.gray:hover, a.gray:active, a.gray:visited, a.gray:hover, a.gray:active{
+    color: darkgray;
+    
 }
 
 .top {
