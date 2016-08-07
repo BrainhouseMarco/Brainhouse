@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
 <head>
 <title>Email Versendet - Kundenkontakt</title>
@@ -33,7 +32,7 @@
         echo "Nachricht: " .$nachricht. "<br>";
 
 
-        echo '<h2>Nachricht an Brainhouse</h2>';
+        echo '<h2>Nachricht an brainhouse</h2>';
         echo 'Von '.$nachname.' '.$vorname.' ('.$email.') <br> an info@brainhouse.de';
         echo '<br><hr>';
         echo '<br>';

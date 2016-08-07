@@ -115,13 +115,16 @@
                 <h1>Bestellvorgang</h1>
                 <!--/*<form action="BHwebRegistrierung_speichern.php" method="post">*/-->
                     <input type="text" name="vornameInput" placeholder="Vorname" maxlength="30" class="inPut" style="width: 45%;">
-                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 50%;" >                       
+                    <input type="text" name="nachnameInput" placeholder="Nachname" maxlength="30" class="inPut" style="margin-left: 1%; width: 50%;" >             
                     <br>
                     <input type="text" name="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 65%;">
                     <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30%;">
                     <br>
                     <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" style="width: 25%;">
-                    <input type="text" name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;" >
+                    <select name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;">
+                        <option value="null">Ort</option>
+                    </select>    
+                    <?--//<input type="text" name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;">
                     <button id="autoPLZbtn" type="submit" class="subbtn" value="PLZ vervollständigen" style="margin-left: 1%; width: 25%; display: none;">PLZ ermitteln</button>
                     <br>
                     <input type="text" name="telNrInput" placeholder="Telefon" maxlength="30" class="inPut" style="width: 45%;">

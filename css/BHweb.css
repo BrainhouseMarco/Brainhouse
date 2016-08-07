@@ -21,7 +21,7 @@ fieldset {
 a.menue:link,a.menue:visited,a.menue:active, a.menue:hover {
     color:white; 
     background-color:transparent; 
-    text-decoration:none
+    text-decoration:none;
 }
 a.menue:hover   {
     color:#e27d2f;
