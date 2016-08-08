@@ -130,6 +130,7 @@
                 echo '<br>';                
                 echo "<h3>Neue Bestellung:
                       <br>
+                      <br>
                       <p>
                         ".$nachname.", ".$vorname."<br>
                         ".$strasse." ".$hnr."<br>
