@@ -22,32 +22,32 @@
          $passwort       = filter_var($_POST["passInput"],          FILTER_SANITIZE_STRING);
          $passwortw      = filter_var($_POST["passWInput"],         FILTER_SANITIZE_STRING);
         
-         if (!isset($_POST["Starterpaket"])){ 
+         if (isset($_POST["Starterpaket"])){ 
             $produkt1   = 1;
          }else{
             $produkt1   = 0;
          }
-         if (!isset($_POST["Heizpaket"])){ 
+         if (isset($_POST["Heizpaket"])){ 
             $produkt2   = 1;
          }else{
             $produkt2   = 0;
          }
-         if (!isset($_POST["Energiesparpaket"])){ 
+         if (isset($_POST["Energiesparpaket"])){ 
             $produkt3   = 1;
          }else{
             $produkt3   = 0;
          }
-         if (!isset($_POST["Lichtpaket"])){ 
+         if (isset($_POST["Lichtpaket"])){ 
             $produkt4   = 1;
          }else{
             $produkt4   = 0; 
          }
-         if (!isset($_POST["Kamerapaket"])){ 
+         if (isset($_POST["Kamerapaket"])){ 
             $produkt5   = 1;
          }else{
             $produkt5   = 0;
          }
-         if (!isset($_POST["Solarpaket"])){ 
+         if (isset($_POST["Solarpaket"])){ 
             $produkt6   = 1;
          }else{
             $produkt6   = 0;
@@ -109,14 +109,16 @@
 
         if($stv==0){
             if($stv2==1){
-                $eintragen = mysqli_query($verbindung, "UPDATE kunde SET Vorname='$vorname',Nachname='$nachname',Telefon='$tel',Email='$email', Strasse='$strasse',HNR='$hnr',PLZ='$plz',Ort='$ort',
-                 Passwort='$passwort' WHERE EMail='$email'");
+                $sql = "UPDATE kunde SET Vorname='$vorname',Nachname='$nachname',Telefon='$tel',Email='$email',
+                    Strasse='$strasse',HNR='$hnr',PLZ='$plz',Ort='$ort',
+                    Passwort='$passwort' WHERE EMail='$email'";
+                $eintragen = mysqli_query($verbindung, $sql);
                 
             }else if($stv2==0){
                 $eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname,Nachname,Telefon,Email,Strasse,HNR,PLZ,Ort,Passwort,Produkt1,Produkt2,Produkt3,Produkt4,Produkt5,Produkt6) 
-                VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$plz',$ort',$passwort','$produkt1','$produkt2','$produkt3','$produkt4','$produkt5','$produkt6')");
+                VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$plz','$ort','$passwort','$produkt1','$produkt2','$produkt3','$produkt4','$produkt5','$produkt6')");
             }
-            if(mysqli_query($verbindung, $eintragen)){
+            if($eintragen){
                 echo '<div class="middle">';
                 echo '<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7     Werktagen geliefert</h3>';
                 echo '<br>';
@@ -150,6 +152,7 @@
                 echo '<hr>';
                 echo '<br>';
             }else{
+                echo "<h6 style='color: white;'>Fehler: Kundendaten konnten nicht gespeichert werden.<br>Bestellvorgang wurde abgebrochen.<h6>";
                 echo "<h3><a href='BHwebShop.php' style='color: white; text-decoration:none'>zurück zum Shop</a></h3>";
             }
             
@@ -165,13 +168,16 @@
             }else if($stv2==0){
                 $time=time();
 				$code=md5($time);
-				$eintragen = mysqli_query($verbindung, "INSERT INTO kunde (Vorname,Nachname,Telefon,Email,Strasse,HNR,PLZ,Ort,Passwort,NewsCode,Produkt1,Produkt2,Produkt3,Produkt4,Produkt5,Produkt6) 
-                VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$plz','$ort','$passwort','$code','$produkt1','$produkt2','$produkt3','$produkt4','$produkt5','$produkt6')");
+                $sql = "INSERT INTO kunde (Vorname,Nachname,Telefon,Email,Strasse,HNR,PLZ,Ort,Passwort,NewsCode,Produkt1,Produkt2,Produkt3,Produkt4,Produkt5,Produkt6) 
+                    VALUES ('$vorname','$nachname','$tel','$email','$strasse','$hnr','$plz','$ort','$passwort','$code',
+                            '$produkt1','$produkt2','$produkt3','$produkt4','$produkt5','$produkt6')";
+				$eintragen = mysqli_query($verbindung, $sql);
             }
             
-            if(mysqli_query($verbindung, $eintragen)){
+            if($eintragen){
                 echo '<div class="middle">';
                 echo "<h2>Nachricht an Kunde</h2>";
+                echo '<hr>';
                 echo '<br>';                
                 echo "<h3>Vielen Dank für Ihre Bestellung.<br>Die angeforderten Informationen werden innerhalb der nächsten 2-7 Werktagen geliefert<br>
                 Um Ihre Anmeldung f&uuml;r unseren Newsletter abzuschlie&szlig;en, klicken sie bitte auf den folgenden Link: 
@@ -179,15 +185,13 @@
                 echo '<hr>';
                 echo '<br>';
                 echo "<h3><a href='BHwebShop.php'>zurück zum Shop</a></h3>";
-                echo '</div>';echo '<div class="middle">';
-                echo '<br>';
-                echo '<br>';
-                echo '<hr>';
-                echo '<br>';
-                echo '<br>';
+                echo '</div>';
+                echo '<div class="middle">';
                 echo "<h2>Nachricht an brainhouse</h2>";
+                echo '<hr>';
                 echo '<br>';                
                 echo "<h3>Neue Bestellung:
+                      <br>
                       <br>
                       <p>
                         ".$nachname.", ".$vorname."<br>
@@ -214,6 +218,7 @@
                 echo '</div>';
                 
             }else{
+                echo "<h6 style='color: white;'>Fehler: Kundendaten konnten nicht gespeichert werden.<br>Bestellvorgang wurde abgebrochen.</h6>";
                 echo "<h3><a href='BHwebShop.php' style='color: white; text-decoration:none'>zurück zum Shop</a></h3>";
             }
         }
