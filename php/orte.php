@@ -1,5 +1,5 @@
 <?php require_once('DB_Verbindung.php');
-	$query = "SELECT distinct `PLZ-ONAME`, PLZ FROM PLZ WHERE PLZ like '".$_GET['q']."%' ORDER BY `PLZ-ONAME` ASC ";
+	$query = "SELECT distinct `PLZ-ONAME`, PLZ FROM PLZ WHERE PLZ like '".filter_var($_GET['q'],       FILTER_SANITIZE_STRING)."%' ORDER BY `PLZ-ONAME` ASC ";
 	$ergebnis = mysqli_query($verbindung, $query);
 	$i =0;
 	if($dsatz = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)){
