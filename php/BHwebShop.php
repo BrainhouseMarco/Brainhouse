@@ -14,6 +14,136 @@
                     $("#bestelldiv").toggle();                        
                 });
             });
+			
+			
+		window.onload = function(){
+			
+        function getAutocomplete(value){
+                var values = [<?php require_once('DB_Verbindung.php');
+		 
+								$ergebnis = mysqli_query($verbindung, "select * from plz");
+								$dsatz = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC);
+								echo "\"".$dsatz["PLZ"]."\" ";
+								while ($dsatz = mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)){
+									echo ", \"".$dsatz["PLZ"]."\" ";
+								}
+								?>];
+								
+				var found = [];
+                for (var i = 0; i < values.length; i++){
+                        if (values[i].substring(0, value.length) === value){
+                                found.push(values[i]);
+                        }
+                };
+                return found;
+        }
+
+        var input = document.getElementById("plzInput");
+        var oldValue = input.value;
+        input.onkeydown = function(ev){
+                oldValue = this.value;
+        }
+        input.onkeyup = function(ev){
+                if (!ev){
+                        ev = event;
+                }
+                if (
+                        this.value !== oldValue && //all no text keys
+                        ev.keyCode !== 8  && //back space
+                        ev.keyCode !== 46 &&// delete
+						ev.keyCode !== 2 && //mouse						
+                        this.value
+                ){
+                        var found = getAutocomplete(this.value);
+						getData();
+                        if (found.length){
+                                var newValue = found[0];
+                                if (typeof this.selectionStart !== "undefined"){
+                                        var start = this.selectionStart;
+                                        this.value = newValue;
+                                        this.selectionStart = start;
+                                        this.selectionEnd = this.value.length;
+                                }
+                                else {
+                                        var range = document.selection.createRange();
+                                        this.select();
+                                        var range2 = document.selection.createRange();
+
+                                        range2.setEndPoint("EndToStart", range);
+                                        var start = range2.text.length;
+
+                                        this.value = newValue;
+                                        this.select();
+                                        range = document.selection.createRange();
+                                        range.moveStart("character", start);
+                                        range.select();
+                                }
+                        }
+                }
+        };
+};
+			var req = null;
+			var READY_STATE_UNINITIALIZED = 0;
+			var READY_STATE_LOADING = 1;
+			var READY_STATE_LOADED = 2;
+			var READY_STATE_INTERACTIVE = 3;
+			var READY_STATE_COMPLETE = 4;
+
+			function getData() {
+				var obj = document.getElementById("plzInput");
+				 var strURL = "orte.php?q="+obj.value;
+				sendRequest( strURL );
+			}
+			
+			function sendRequest(url,params,HTTPMethod) {
+				if (!HTTPMethod) {
+				HTTPMethod = "GET";
+				}
+				req = initXMLHTTPRequest();
+				if (req) {
+				//var inhalt = document.getElementById("plzInput").value;
+				req.onreadystatechange = onReadyState;
+				req.open(HTTPMethod,url,true);
+				//	req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				req.send(params);
+				}
+			}
+			
+			function initXMLHTTPRequest() {
+				var xRequest = null;
+				if (window.XMLHttpRequest) {
+					xRequest = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					xRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			return xRequest;
+			}
+			
+			function onReadyState() {
+				var ready = req.readyState;
+				var data = null;
+				//alert("onreadystate()");
+				if (ready == READY_STATE_COMPLETE) {
+					if( req.responseText ) {
+						var objSelect = document.getElementById( "Ort" );
+						objSelect.options.length = 0;
+						//alert("onreadystate() before array");
+						//alert("response:"+req.responseText);
+						arrOptions = eval("(" + req.responseText + ")");
+						//alert("onreadystate() after array");
+						for( var i = 0; i < arrOptions.length; i++ ) {
+							 // alert(arrOptions[i][1]);
+							objSelect.options[ i ] = new Option( arrOptions[i][1]+"("+arrOptions[i][2]+")", arrOptions[i][1], false, false );
+						}
+					//document.getElementById( "seldiv2" ).style.visibility = "visible";
+					}
+				}
+			}
+			
+			function setplz(){
+				var plz = document.getElementById("plzInput");
+				plz.value = arrOptions[document.getElementById("Ort").selectedIndex][2];
+			}
         </script
         <title>brainhouse - SHOP</title>
     </head>
@@ -120,9 +250,9 @@
                     <input type="text" name="strasseInput" placeholder="Straße" maxlength="60" class="inPut" style="width: 65%;">
                     <input type="text" name="hnrInput" placeholder="Nr." maxlength="60" class="inPut" style="margin-left: 1%; width: 30%;">
                     <br>
-                    <input type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" style="width: 25%;">
-                    <select name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;">
-                        <option value="null">Ort</option>
+                    <input id="plzInput" onchange="getData()" type="text" name="plzInput" placeholder="PLZ" maxlength="5" class="inPut" style="width: 25%;">
+                    <select id ="Ort" onchange="setplz()" name="ortInput" placeholder="Bitte PLZ eintragen!" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;">
+                        <option value="null">Bitte PLZ eintragen!</option>
                     </select>    
                     <?--//<input type="text" name="ortInput" placeholder="Ort" maxlength="30" class="inPut" style="margin-left: 1%; width: 69%;">
                     <button id="autoPLZbtn" type="submit" class="subbtn" value="PLZ vervollständigen" style="margin-left: 1%; width: 25%; display: none;">PLZ ermitteln</button>
